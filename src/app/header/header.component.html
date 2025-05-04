@@ -1,0 +1,25 @@
+<mat-toolbar class="navbar" color="transparent" dir="rtl">
+    <span class="logo">
+      <img src="../assets/logo-removebg-preview.png" alt="لوجو نادي القراء" class="logo-img">
+      نادى القراء
+    </span>
+    
+    <span class="spacer"></span>
+    <div class="nav-links">
+      <a mat-button routerLink="/">الرئيسية</a>
+      <a mat-button routerLink="/channels">جميع القنوات</a>
+      <a mat-button routerLink="/allStories">الروايات</a>
+      <!-- If user is NOT authorized -->
+      <ng-container *ngIf="!isAuthorize">
+        <a routerLink="/register" mat-button>إنشاء حساب</a>
+        <a routerLink="/login" mat-button>تسجيل الدخول</a>
+      </ng-container>
+  
+      <!-- If user IS authorized -->
+      <ng-container *ngIf="isAuthorize">
+        <button mat-button (click)="LogOut()">تسجيل الخروج</button>
+        <a routerLink="/profile" mat-button>حسابي</a>
+      </ng-container>
+    </div>
+  </mat-toolbar>
+  

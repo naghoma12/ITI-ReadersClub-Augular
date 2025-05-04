@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 50px 40px;
+  }
+  
+  .book-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    border-radius: 16px;
+  }
+  
+  .book-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .book-card img {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .book-card h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    font-weight: 600;
+  }

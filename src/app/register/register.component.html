@@ -1,0 +1,92 @@
+<div class="main">
+    <section class="signup">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-form">
+            <div *ngIf="isLoading" class="loading-overlay">
+              <div class="spinner"></div>
+            </div>
+            <h2 class="text-center">إنشاء حساب</h2>
+           
+            <form method="POST" [formGroup]="registerForm" class="register-form" id="register-form" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="name"><i class="material-icons">person</i></label>
+                <input type="text" name="name" id="name" placeholder="ادخل اسمك "
+                  formControlName="name" />
+                <div *ngIf="apiErrors['name']" class="error-message">{{ apiErrors['name'] }}</div>
+                @if(formControls['name'].invalid && formControls['name'].touched) {
+                    @if(formControls['name'].hasError('required')) {
+                      <div class="error-message">الاسم مطلوب</div>
+                    }
+                  }
+              </div>
+              <div class="form-group">
+                <label for="email"><i class="material-icons">email</i></label>
+                <input type="email" name="email" id="email" placeholder="ادخل بريدك الإلكتروني  "
+                  formControlName="email" />
+                <div *ngIf="apiErrors['email']" class="error-message">{{ apiErrors['email'] }}</div>
+                @if(formControls['email'].invalid && formControls['email'].touched) {
+                  @if(formControls['email'].hasError('required')) {
+                    <div class="error-message">البريد الإلكتروني مطلوب</div>
+                  }
+                  @else if (formControls['email'].hasError('email')) {
+                    <div class="error-message">ادخل البريد الإلكتروني بشكل صحيح</div>
+                  }
+                }
+              </div>
+              <div class="form-group">
+                <label for="pass"><i class='fas fa-lock'></i></label>
+                <input type="password" name="pass" id="pass" placeholder="ادخل الرقم السري"
+                  formControlName="password" />
+                <div *ngIf="apiErrors['password']" class="error-message">{{ apiErrors['password'] }}</div>
+                @if(formControls['password'].invalid && formControls['password'].touched) {
+                  @if(formControls['password'].hasError('required')) {
+                    <div class="error-message">الرقم السري مطلوب</div>
+                  }
+                  @else if (formControls['password'].hasError('minlength')) {
+                    <div class="error-message">كلمة المرور يجب أن تحتوي على حرف كبير، حرف صغير، رقم، وأن تكون على الأقل 8 أحرف</div>
+                  }
+                }
+              </div>
+              <div class="form-group">
+                <label for="re-pass"><i class='fas fa-lock'></i></label>
+                <input type="password" name="re_pass" id="re_pass" placeholder="تأكيد الرقم السري"
+                  formControlName="confirmPassword" />
+                <div *ngIf="apiErrors['confirmPassword']" class="error-message">{{ apiErrors['confirmPassword'] }}</div>
+                @if(formControls['confirmPassword'].invalid && formControls['confirmPassword'].touched) {
+                  @if(formControls['confirmPassword'].hasError('required')) {
+                    <div class="error-message">يجب تأكيد الرقم السري</div>
+                  }
+                 }
+              </div>
+              <div class="form-radio-group">
+                <div class="radio-row">
+                  <label class="radio-option">
+                    <input type="radio" name="isAuthor" value="reader"
+                      formControlName="isAuthor" [value]="false" />
+                    <span class="custom-radio"></span>
+                    قارئ
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="isAuthor" value="author"
+                      formControlName="isAuthor" [value]="true" />
+                    <span class="custom-radio"></span>
+                    مؤلف
+                  </label>
+                </div>
+                <div *ngIf="apiErrors['isAuthor']" class="error-message">{{ apiErrors['isAuthor'] }}</div>
+              </div>
+              <div *ngIf="apiErrors['general']" class="error-message">{{ apiErrors['general'] }}</div>
+              <div class="form-group form-button-container">
+                <p class="login-link">
+                  لديك حساب بالفعل؟ <a href="../login">تسجيل الدخول</a>
+                </p>
+                <input type="submit" name="signup" id="signup" class="form-submit" value="تسجيل" />
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>

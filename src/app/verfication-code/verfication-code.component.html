@@ -1,0 +1,48 @@
+<div class="main">
+    <section class="signup">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-form">
+            <div *ngIf="isLoading" class="loading-overlay">
+              <div class="spinner"></div>
+            </div>
+  
+            <h2 class="text-center">أدخل رمز التحقق</h2>
+  
+            <!-- ✅ رسالة تنبيه بأن الكود تم إرساله -->
+            <p class="text-center verification-info">
+              تم إرسال رمز التحقق إلى بريدك الإلكتروني. يرجى مراجعته وإدخاله أدناه.
+            </p>
+  
+            <form method="POST" [formGroup]="verificationForm" class="login-form" id="verification-form" (ngSubmit)="onVerifyCode()">
+              <div class="form-group">
+                <label for="code"><i class="material-icons">lock</i></label>
+                <input type="text" name="code" id="code" placeholder="أدخل رمز التحقق" formControlName="code" />
+                
+                <div *ngIf="apiErrors['code']" class="error-message">{{ apiErrors['code'] }}</div>
+  
+                <div *ngIf="formControls['code'].invalid && formControls['code'].touched">
+                  <div *ngIf="formControls['code'].hasError('required')" class="error-message">
+                    رمز التحقق مطلوب
+                  </div>
+                  <div *ngIf="formControls['code'].hasError('minlength')" class="error-message">
+                    يجب أن يتكون رمز التحقق من 6 أرقام
+                  </div>
+                  <div *ngIf="formControls['code'].hasError('pattern')" class="error-message">
+                    يجب أن يحتوي رمز التحقق على أرقام فقط
+                  </div>
+                </div>
+              </div>
+  
+              <div *ngIf="apiErrors['general']" class="error-message">{{ apiErrors['general'] }}</div>
+  
+              <div class="form-group form-button-container">
+                <input type="submit" name="verify" id="verify" class="form-submit" value="تحقق" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

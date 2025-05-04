@@ -1,0 +1,60 @@
+
+<mat-card class="book-details-card" *ngIf="story">
+  <button mat-icon-button class="save-button" aria-label="Save" >
+    <mat-icon [ngStyle]="{'color': saved ? 'green' : 'gray'}" (click)="Saved()">bookmark</mat-icon>
+  </button>
+  <div class="book-header">
+    <div class="left-side">
+      <img [src]="story.cover" alt="{{ story.title }}" class="book-cover" />
+  
+      <div class="interaction-buttons">
+        <button mat-icon-button  >
+          <mat-icon [ngStyle]="{'color': like ? 'green' : 'gray'}" aria-label="Like" (click)="clickLick()">thumb_up</mat-icon>
+        </button>
+        <span>{{ story.likesCount }}</span>
+  
+        <button mat-icon-button  aria-label="Dislike" (click)="clickdisLick()">
+          <mat-icon [ngStyle]="{'color': disLick ? 'green' : 'gray'}" >thumb_down</mat-icon>
+        </button>
+        <span>{{ story.dislikesCount }}</span>
+  
+        <button mat-icon-button color="accent" aria-label="Comment">
+          <mat-icon>chat_bubble</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="book-info">
+      <h2>{{ story.title }}</h2>
+      <p><strong>القناة:</strong> {{ story.channelName }}</p>
+      <p><strong>التصنيف:</strong> {{ story.categoryName }}</p>
+      <div class="stars">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <mat-icon color="warn">
+            {{ story.averageRating >= star ? 'star' : (story.averageRating >= star - 0.5 ? 'star_half' : 'star_border') }}
+          </mat-icon>
+        </ng-container>
+      </div>
+      <p><strong>عدد المشاهدات:</strong> {{ story.viewsCount }}</p>
+      <p><strong>الإعجابات:</strong> {{ story.likesCount }}</p>
+      <p><strong>عدم الإعجاب:</strong> {{ story.dislikesCount }}</p>
+    </div>
+  </div>
+
+  <mat-card-content class="description">
+    <h3>الوصف</h3>
+    <p>{{ story.description }}</p>
+
+    <h3>الملخص</h3>
+    <p>{{story.summary }}</p>
+
+    <div class="actions">
+      <a mat-raised-button color="primary" *ngIf="story.file" [href]="story.file" target="_blank">
+        📖 قراءة الرواية
+      </a>
+          
+      <a mat-raised-button color="accent"  *ngIf="story.audio" [href]="story.audio" target="_blank">
+        🔊 استمع للرواية
+      </a>
+    </div>
+  </mat-card-content>
+</mat-card>

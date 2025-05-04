@@ -1,0 +1,65 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* مسافة بين الصورة والنص */
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50; /* لون أنيق للنص */
+  font-family: 'Cairo', sans-serif; /* خط عربي جميل */
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%; /* زوايا ناعمة */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* ظل خفيف للصورة */
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.book-details-card {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.book-header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-cover {
+  width: 220px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.interaction-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}

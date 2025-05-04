@@ -1,0 +1,665 @@
+/* @extend display-flex; */
+.display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
+    display: flex;
+    display: -webkit-flex;
+  }
+  
+  /* @extend list-type-ulli; */
+  .list-type-ulli, .socials {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  a:focus, a:active {
+    text-decoration: none;
+    outline: none;
+    transition: all 300ms ease 0s;
+    -moz-transition: all 300ms ease 0s;
+    -webkit-transition: all 300ms ease 0s;
+    -o-transition: all 300ms ease 0s;
+    -ms-transition: all 300ms ease 0s;
+  }
+  
+  input, select, textarea {
+    outline: none;
+    appearance: unset !important;
+    -moz-appearance: unset !important;
+    -webkit-appearance: unset !important;
+    -o-appearance: unset !important;
+    -ms-appearance: unset !important;
+  }
+  
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    appearance: none !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    -o-appearance: none !important;
+    -ms-appearance: none !important;
+    margin: 0;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+  }
+  
+  input[type=checkbox] {
+    appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    -o-appearance: checkbox !important;
+    -ms-appearance: checkbox !important;
+  }
+  
+  input[type=radio] {
+    appearance: radio !important;
+    -moz-appearance: radio !important;
+    -webkit-appearance: radio !important;
+    -o-appearance: radio !important;
+    -ms-appearance: radio !important;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  figure {
+    margin: 0;
+  }
+  
+  p {
+    margin-bottom: 0px;
+    font-size: 15px;
+    color: #777;
+  }
+  
+  h2 {
+    line-height: 1.66;
+    margin: 0 0 30px 0; /* إضافة مساحة أسفل العنوان */
+    padding: 0;
+    font-weight: bold;
+    color: #2C3930;
+    font-family: Poppins;
+    font-size: 32px; /* تصغير حجم الخط قليلاً */
+    text-align: center; /* توسيط العنوان */
+  }
+  
+  .main {
+    background: #f8f8f8;
+    padding: 30px 0;
+  }
+  
+  .clear {
+    clear: both;
+  }
+  
+  body {
+    font-size: 14px; /* زيادة حجم الخط الأساسي قليلاً */
+    line-height: 1.8;
+    color: #2C3930;
+    background: #f8f8f8;
+    font-weight: 400;
+    font-family: Poppins;
+    direction: rtl; /* تطبيق اتجاه النص من اليمين لليسار على مستوى الجسم */
+  }
+  
+  .container {
+    width: 60%; /* جعل الحاوية أكثر استجابة */
+    max-width: 900px;
+    background: #fff;
+    margin: 30px auto; /* إضافة مساحة أعلى وأسفل الحاوية */
+    box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    border-radius: 15px; /* تقليل حدة الزوايا قليلاً */
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+    -ms-border-radius: 15px;
+    overflow: hidden; /* لمنع تجاوز العناصر لحدود الحاوية */
+  }
+  
+  .display-flex {
+    justify-content: space-between;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -o-justify-content: space-between;
+    -ms-justify-content: space-between;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+  }
+  
+  .display-flex-center {
+    justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+  }
+  
+  .position-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  
+  .signup-content {
+    padding: 60px; /* تقليل الحشو قليلاً */
+    display: flex; /* استخدام فليكس لتوزيع العناصر أفقياً */
+    flex-direction: row-reverse; /* عكس ترتيب العناصر ليكون النموذج على اليمين والصورة على اليسار */
+    justify-content: center; /* توزيع المساحة بين النموذج والصورة */
+    align-items: center; /* محاذاة رأسية للعناصر */
+  }
+  
+  .signup-form, .signup-image, .signin-form, .signin-image {
+    width: 50%; /* تقليل عرض النموذج والصورة لإتاحة مساحة بينهما */
+    overflow: hidden;
+  }
+  
+  .signup-image {
+    margin: 0; /* إزالة الهوامش من الصورة */
+    text-align: center; /* توسيط الصورة */
+  }
+  
+  .form-title {
+    margin-bottom: 30px;
+    text-align: center; /* توسيط عنوان النموذج */
+  }
+  
+  .signup-image {
+    margin-top: 0; /* إزالة الهامش العلوي للصورة */
+  }
+  
+  figure {
+    margin-bottom: 20px; /* تقليل الهامش السفلي للصورة */
+    text-align: center;
+  }
+  .form-button-container {
+    display: flex; /* تفعيل flexbox لترتيب العناصر بجانب بعضها */
+    justify-content: space-between; /* توزيع المسافة بين العناصر (الرابط والزر) */
+    align-items: center; /* محاذاة العناصر رأسياً في المنتصف */
+    margin-top: 20px; /* إضافة بعض المسافة أعلى هذا الجزء */
+  }
+  
+  .form-submit {
+    /* احتفظ بتنسيقات الزر كما هي أو عدّلها حسب رغبتك */
+    display: inline-block; /* تغيير إلى inline-block ليأخذ عرض محتواه */
+    background: #2C3930;
+    color: #fff;
+    border: none;
+    padding: 10px ; /* تقليل بعض الحشو إذا لزم الأمر */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-submit:hover {
+    background: #3F4F44;
+  }
+  
+  .login-link {
+    font-size: 14px;
+    color: #777;
+    margin: 0; /* إزالة أي هوامش افتراضية */
+  }
+  
+  .login-link a {
+    color: #6dabe4;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  
+  .signup-image-link {
+    font-size: 14px;
+    color: #222;
+    display: block;
+    text-align: center;
+    margin-top: 15px; /* إضافة مساحة أعلى الرابط */
+    text-decoration: none; /* إزالة الخط الافتراضي للرابط */
+  }
+  .signup-image-link:hover {
+    color: #6dabe4; /* تغيير اللون عند التhover */
+  }
+  
+  .term-service {
+    font-size: 13px;
+    color: #222;
+  }
+  
+  .signup-form {
+    margin: 0; /* إزالة الهوامش */
+    padding: 0 30px; /* إضافة حشو من الجوانب */
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر عمودياً */
+    justify-content: center; /* توسيط العناصر عمودياً */
+  }
+  
+  .register-form {
+    width: 100%;
+  }
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 20px; /* تقليل المسافة بين الحقول */
+    overflow: hidden;
+  }
+  
+  
+  input {
+    width: 100%;
+    display: block;
+    border: 1px solid #ccc; /* إضافة حدود للحقول */
+    border-radius: 5px; /* إضافة زوايا مدورة للحقول */
+    padding: 10px 30px 10px 10px; /* تعديل الحشو الداخلي لتوفير مساحة للأيقونة */
+    font-family: Poppins;
+    box-sizing: border-box;
+    font-size: 16px; /* زيادة حجم الخط داخل الحقول */
+    color: #333; /* تغيير لون النص داخل الحقول */
+  }
+  input::-webkit-input-placeholder {
+    color: #999;
+    font-size: 16px;
+    padding-right: 10px; /* إضافة مساحة للأيقونة */
+  }
+  input::-moz-placeholder {
+    color: #999;
+  }
+  input:-ms-input-placeholder {
+    color: #999;
+  }
+  input:-moz-placeholder {
+    color: #999;
+  }
+  input:focus {
+    border-color: #6dabe4; /* تغيير لون الحدود عند التركيز */
+  }
+  input:focus::-webkit-input-placeholder {
+    color: #222;
+  }
+  input:focus::-moz-placeholder {
+    color: #222;
+  }
+  input:focus:-ms-input-placeholder {
+    color: #222;
+  }
+  input:focus:-moz-placeholder {
+    color: #222;
+  }
+  
+  input[type=checkbox]:not(old) {
+    width: 2em;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    display: none;
+  }
+  
+  input[type=checkbox]:not(old) + label {
+    display: inline-block;
+    line-height: 1.5em;
+    margin-top: 6px;
+  }
+  
+  input[type=checkbox]:not(old) + label > span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 15px;
+    margin-bottom: 3px;
+    border: 1px solid #999;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    background: white;
+    background-image: -moz-linear-gradient(white, white);
+    background-image: -ms-linear-gradient(white, white);
+    background-image: -o-linear-gradient(white, white);
+    background-image: -webkit-linear-gradient(white, white);
+    background-image: linear-gradient(white, white);
+    vertical-align: bottom;
+  }
+  
+  input[type=checkbox]:not(old):checked + label > span {
+    background-image: -moz-linear-gradient(white, white);
+    background-image: -ms-linear-gradient(white, white);
+    background-image: -o-linear-gradient(white, white);
+    background-image: -webkit-linear-gradient(white, white);
+    background-image: linear-gradient(white, white);
+  }
+  
+  input[type=checkbox]:not(old):checked + label > span:before {
+    content: '\f26b';
+    display: block;
+    color: #222;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    font-family: 'Material-Design-Iconic-Font';
+    font-weight: bold;
+  }
+  
+  .agree-term {
+    display: inline-block;
+    width: auto;
+  }
+  
+  label {
+    position: absolute;
+    right: 10px; /* تغيير الاتجاه إلى اليمين للأيقونات */
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    color: #999; /* لون الأيقونات */
+    font-size: 18px; /* حجم الأيقونات */
+  }
+  
+  .label-has-error {
+    top: 22%;
+  }
+  
+  label.error {
+    position: relative;
+    /* background: url("./recources/logo.jpeg") no-repeat; */
+    background-position-y: 3px;
+    padding-right: 20px; /* تغيير اتجاه الحشو للأخطاء */
+    display: block;
+    margin-top: 10px; /* تقليل المسافة لرسائل الخطأ */
+    color: red; /* لون رسائل الخطأ */
+    font-size: 12px; /* تصغير حجم خطأ الرسالة */
+  }
+  
+  label.valid {
+    display: block;
+    position: absolute;
+    left: 0; /* تغيير الموضع للأيقونة الصحيحة */
+    right: auto;
+    margin-top: -6px;
+    width: 20px;
+    height:20px;
+    background: transparent;
+  }
+  label.valid:after {
+    font-family: 'Material-Design-Iconic-Font';
+    content: '\f269';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* right: 0; */
+    font-size: 16px;
+    color: green;
+    left: 0; /* تغيير الموضع للأيقونة الصحيحة */
+    right: auto;
+  }
+  
+  .label-agree-term {
+    position: relative;
+    top: 0%;
+    transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    -ms-transform: translateY(0);
+  }
+  
+  .material-icons-name {
+    font-size: 18px;
+  }
+  
+  .signin-content {
+    padding-top: 67px;
+    padding-bottom: 87px;
+  }
+  
+  .social-login {
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+    margin-top: 40px; /* تقليل الهامش العلوي لتسجيل الدخول الاجتماعي */
+    flex-direction: column; /* ترتيب العناصر عمودياً في الشاشات الصغيرة */
+  }
+  
+  .social-label {
+    display: inline-block;
+    margin-right: 0; /* إزالة الهامش الأيمن */
+    margin-bottom: 10px; /* إضافة هامش سفلي */
+  }
+  
+  .socials li {
+    padding: 5px;
+  }
+  .socials li:last-child {
+    margin-right: 0px;
+  }
+  .socials li a {
+    text-decoration: none;
+  }
+  .socials li a i {
+    width: 40px; /* زيادة حجم الأيقونات الاجتماعية */
+    height: 40px;
+    color: #fff;
+    font-size: 18px; /* زيادة حجم خط الأيقونات الاجتماعية */
+    border-radius: 50%; /* جعل الأيقونات دائرية */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .socials li:hover a i {
+    -webkit-transform: scale(1.1) translateZ(0);
+    transform: scale(1.1) translateZ(0);
+  }
+  
+  .zmdi-facebook {
+    background: #3b5998;
+  }
+  
+  .zmdi-twitter {
+    background: #1da0f2;
+  }
+  
+  .zmdi-google {
+    background: #e72734;
+  }
+  
+  .signin-form {
+    margin-right: auto; /* توسيط النموذج */
+    margin-left: auto;
+    padding: 0 30px;
+    width: 100%; /* جعله يأخذ كامل العرض في الشاشات الصغيرة */
+    max-width: 400px; /* تحديد أقصى عرض للنموذج */
+  }
+  
+  
+  @media screen and (max-width: 1200px) {
+    .container {
+        width: calc( 100% - 30px);
+        max-width: 100%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .signup-content, .signin-content {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column;
+        justify-content: center;
+        -moz-justify-content: center;
+        -webkit-justify-content: center;
+        -o-justify-content: center;
+        -ms-justify-content: center;
+        padding: 30px; /* تقليل الحشو في الشاشات الصغيرة */
+    }
+  
+    .signup-form, .signup-image, .signin-form, .signin-image {
+        width: 100%;
+    }
+  
+    .signup-form {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        /* box-sizing: border-box; */
+        padding: 0 30px;
+        margin-bottom: 20px; /* إضافة مساحة أسفل النموذج */
+    }
+  
+  
+  
+    .form-button {
+        text-align: center;
+    }
+  
+    .form-title {
+        text-align: center;
+        font-size: 28px; /* تصغير حجم العنوان في الشاشات الصغيرة */
+        margin-bottom: 20px;
+    }
+  }
+  .form-radio-group {
+    margin-bottom: 20px;
+    direction: rtl;
+  }
+  
+  .radio-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: right; /* محاذاة العنوان لليمين */
+  }
+  
+  .radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-right: 30px; /* زيادة الهامش الأيمن للنص */
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  .radio-option input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+  }
+  
+  .custom-radio {
+    height: 18px; /* زيادة حجم الدائرة */
+    width: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 15px; /* زيادة المسافة بين الدائرة والنص */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .radio-option input[type="radio"]:checked + .custom-radio {
+    background-color: #3F4F44;
+    box-shadow: inset 0 0 0 4px white;
+    border-color: #2C3930;
+  }
+  .radio-row {
+    display: flex;
+    gap: 130px; /* تقليل المسافة بين الزرين */
+    flex-wrap: wrap; /* يسمح لهم بالنزول في سطر جديد إذا صغُر العرض */
+    justify-content: flex-start; /* محاذاة العناصر إلى اليمين */
+  }
+  
+  .radio-option {
+    flex-direction: row-reverse; /* لجعل النص بجانب الدائرة في RTL */
+  }
+  .error-message {
+    color: darkred;
+    font-size: 0.8em;
+    text-align: right; /* بما أن النص عربي */
+    font-weight: 500;
+  }
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .spinner {
+    border: 6px solid #ccc;
+    border-top: 6px solid #2196f3;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /*# sourceMappingURL=style.css.map */

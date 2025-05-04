@@ -1,0 +1,25 @@
+<div *ngIf="savedStories.length > 0; else noSavedBooks">
+    <div class="book-grid">
+      <mat-card class="book-card" *ngFor="let story of savedStories" (click)="goToDetails(story.id)">
+        <img mat-card-image [src]="story.cover" alt="{{ story.title }}">
+        <mat-card-content>
+          <h3>{{ story.title }}</h3>
+          <p class="channel">{{ story.channelName }}</p>
+          <p class="category">التصنيف: {{ story.categoryName }}</p>
+          <p>التقييم: {{ story.averageRating }}</p>
+          <div class="stars">
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <mat-icon color="warn">
+                {{ story.averageRating >= star ? 'star' : (story.averageRating >= star - 0.5 ? 'star_half' : 'star_border') }}
+              </mat-icon>
+            </ng-container>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
+  <ng-template #noSavedBooks>
+    <p>لا توجد روايات محفوظة لعرضها.</p>
+  </ng-template>
+  

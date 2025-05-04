@@ -1,0 +1,53 @@
+<div class="main">
+    <section class="signup">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-form">
+            <div *ngIf="isLoading" class="loading-overlay">
+              <div class="spinner"></div>
+            </div>
+  
+            <h2 class="text-center">تسجيل الدخول</h2>
+            <div *ngIf="apiErrors['email']" class="error-message">{{ apiErrors['email'] }}</div>
+            <div *ngIf="apiErrors['password']" class="error-message">{{ apiErrors['password'] }}</div>
+  
+            <form method="POST" [formGroup]="loginForm" class="login-form" id="register-form" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="email"><i class="material-icons">email</i></label>
+                <input type="email" name="email" id="email" placeholder="ادخل بريدك الإلكتروني" formControlName="email" />
+  
+                <div *ngIf="formControls['email'].invalid && formControls['email'].touched">
+                  <div *ngIf="formControls['email'].hasError('required')" class="error-message">
+                    البريد الإلكتروني مطلوب
+                  </div>
+                  <div *ngIf="formControls['email'].hasError('email')" class="error-message">
+                    ادخل البريد الإلكتروني بشكل صحيح
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="pass"><i class="fas fa-lock"></i></label>
+                <input type="password" name="pass" id="pass" placeholder="ادخل الرقم السري" formControlName="password" />
+  
+                <div *ngIf="formControls['password'].invalid && formControls['password'].touched">
+                  <div *ngIf="formControls['password'].hasError('required')" class="error-message">
+                    الرقم السري مطلوب
+                  </div>
+                </div>
+              </div>
+  
+              <div *ngIf="apiErrors['general']" class="error-message">{{ apiErrors['general'] }}</div>
+  
+              <div class="form-group form-button-container">
+                <p class="login-link">
+                    <a routerLink="/forget-password">هل نسيت كلمة المرور ؟ </a>
+                    </p>
+                <input type="submit" name="signIn" id="signIn" class="form-submit" value="تسجيل" />              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
