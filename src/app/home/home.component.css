@@ -94,8 +94,8 @@
 }
 /* الروايات الاكثر شعبيه  */
 .section-title {
-  font-size: 38px;
-  margin: 80px 60px 50px;
+  font-size: 35px;
+  margin: 80px 60px 50px ;
   /* text-align: center; */
   color: #141415;
   font-family: "Rakkas", serif;
@@ -105,18 +105,18 @@
 }
 
 .book-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 50px;
-  padding: 0 50px 40px;
+  gap: 20px;
+  padding: 0 10px 5px;
+  margin-bottom: 20px;
 }
 
 .book-card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   transition: 0.3s;
-  border-radius: 16px;
   cursor: pointer;
-  width: 300px;
+  width: 170px;
 }
 
 .book-card:hover {
@@ -124,10 +124,9 @@
 }
 
 .book-card img {
-  height: 350px;
-  object-fit: cover;
-  border-radius: 16px 16px 0 0;
-  padding-bottom: 5px;
+  height: 170px;
+  object-fit: inherit;
+  padding: 5px;
 }
 
 .book-card h3 {
@@ -136,20 +135,32 @@
   font-family: "El Messiri", sans-serif;
   text-align: right;
   /* color: #A27B5C; */
-  font-size: 25px;
-}
-.channel{
-  background-color: #A27B5C;
-  color: white;
+  font-size: 16px;
   text-align: center;
-  width: fit-content;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-weight: 500;
+
 }
+.channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.channel-img {
+  width: 27px !important;
+  height: 27px !important;
+  border-radius: 50%;
+  object-fit: fill;
+  flex-shrink: 0;
+}
+
 .category{
   color: #A02334;
   font-weight: 900;
+  text-align: center;
+  padding-top: 5px;
 }
 .stars mat-icon {
   font-size: 20px;

@@ -1,13 +1,12 @@
-<div class="card-grid-container">
-  <div class="channel-card" *ngFor="let channel of channels" (click)="goToDetails(channel.id)">
-    <img [src]="channel.image" alt="صورة القناة" class="channel-img" />
-    <div class="card-content">
-      <h3>{{ channel.name }}</h3>
-      <p class="owner">بواسطة: {{ channel.owner.userName }}</p>
-      <p class="desc">{{ channel.description }}</p>
-    </div>
-    <div class="card-buttons">
-      <button class="subscribe-btn" >اشترك</button>
-    </div>
+<div class="card-grid-container modern-circular-grid">
+  <div class="channel-card modern-circular-card" *ngFor="let channel of channels" (click)="goToDetails(channel.id)">
+      <div class="circular-image-wrapper modern-circular-image-wrapper">
+          <img [src]="channel.image" alt="صورة القناة" class="channel-img circular-img" />
+      </div>
+      <div class="card-content modern-circular-content">
+          <h3 class="modern-circular-title">{{ channel.name }}</h3>
+          <p class="owner modern-circular-owner">بواسطة: {{ channel.owner.userName }}</p>
+          <p class="desc modern-circular-desc">{{ channel.description }}</p>
+      </div>
   </div>
 </div>

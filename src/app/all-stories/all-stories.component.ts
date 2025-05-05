@@ -6,29 +6,45 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
 import {BookService} from '../services/book.service';
-import { provideHttpClient } from '@angular/common/http';
-import { LogoutService } from '../services/logout.service';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-all-stories',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule , MatToolbarModule , MatIconModule ],
+  imports: [CommonModule, MatCardModule,MatFormFieldModule, MatButtonModule, RouterModule, MatToolbarModule , MatIconModule ,FormsModule],
   templateUrl: './all-stories.component.html',
   styleUrl: './all-stories.component.css'
 })
 export class AllStoriesComponent {
 
-  allStories: any[] = [];
-  constructor(private bookService: BookService,private router: Router,private logoutService: LogoutService) {}
-  ngOnInit(): void {
-    this.bookService.GetAllStories().subscribe({
+  filteredStories: any[] = [];
+  allStories: any[] = []; // متغير لتخزين جميع الروايات
+  searchText !: string;
+  constructor(private bookService: BookService,private router: Router) {}
+  filterStories(): void {
+    this.bookService.getFilteredStories(this.searchText).subscribe({
       next: (data) => {
-        this.allStories = data;
+        this.filteredStories = data;
       },
       error: (err) => {
         console.error('Error loading stories', err);
       }
     });
+  }
+  ngOnInit() {
+    this.bookService.GetAllStories().subscribe({
+      next: (data) => {
+        this.allStories = data; // تخزين جميع الروايات
+      },
+      error: (err) => {
+        console.error('Error loading stories', err);
+      }
+    });
+  }
+  clearSearch() {
+    this.searchText = '';
+    this.filteredStories = this.filteredStories;
   }
   goToDetails(id: number) {
     this.router.navigate(['/book', id]);

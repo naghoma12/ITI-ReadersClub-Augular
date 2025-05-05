@@ -1,0 +1,32 @@
+<div class="channel-details-container modern-view">
+  <div class="channel-header">
+  @if(channel?.image == null) {
+    <img src=".../assets/welcome-image.jpeg" alt="صورة القناة" class="detail-img modern-img" />
+  }@else {
+      <img [src]="channel?.image" alt="صورة القناة" class="detail-img modern-img" />
+    }
+      <div class="channel-info">
+          <h2 class="modern-title">{{ channel?.name }}</h2>
+          <p class="owner modern-text">بواسطة: {{ channel?.owner.userName }}</p>
+      </div>
+      <button class="subscribe-btn modern-button" (click)="subscribe(channel?.id)">اشترك</button>
+  </div>
+
+  <p class="desc modern-text">{{ channel?.description }}</p>
+
+  <h3 class="modern-section-title">القصص الخاصة بالقناة</h3>
+  @if(channel?.stories.length == 0) {
+    <p class="no-stories modern-text">لا توجد قصص متاحة حاليا</p>}
+  @else {
+  <div class="stories-container modern-stories-container">
+      <div class="story-card modern-story-card" *ngFor="let story of channel?.stories" (click)="goToStory(story.id)">
+          <div class="story-image-wrapper modern-story-image-wrapper">
+              <img [src]="story.image" alt="صورة القصة" class="story-img modern-story-img" />
+          </div>
+          <div class="story-info modern-story-info">
+              <h4 class="modern-story-title">{{ story.title }}</h4>
+              <p class="modern-story-category">{{ story.category }}</p>
+          </div>
+      </div>
+  </div>}
+</div>

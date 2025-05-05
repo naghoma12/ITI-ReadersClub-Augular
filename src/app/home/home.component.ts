@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { BookService } from '../services/book.service';
 import { LogoutService } from '../services/logout.service';
+import { MatFormFieldControl } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ import { LogoutService } from '../services/logout.service';
     MatButtonModule,
     RouterModule,
     MatToolbarModule,
-    MatIconModule,
+    MatIconModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -130,5 +130,13 @@ export class BookService {
         headers: this.getAuthHeaders()  
       });
     }
-    
+    getFilteredStories(storyTitle?: string, category?: string, writerName?: string): Observable<any[]> {
+      let params = new HttpParams();
+  
+      if (storyTitle) params = params.set('storyTitle', storyTitle);
+      if (category) params = params.set('category', category);
+      if (writerName) params = params.set('writerName', writerName);
+  
+      return this.http.get<any[]>(`$http://localhost:5298/FilterStory`, { params });
+    }
 }

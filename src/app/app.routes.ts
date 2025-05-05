@@ -8,7 +8,7 @@ import { VerficationCodeComponent } from './verfication-code/verfication-code.co
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChannelsComponent } from './channels/channels.component';
 import { SavedStoriesComponent } from './saved-stories/saved-stories.component';
-import { ChannelComponent } from './channel/channel.component';
+import { ChannelDatailsComponent } from './channel-datails/channel-datails.component';
 
 export const routes: Routes = [
   {
@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   
         { path: 'chanels', component: ChannelsComponent },
-        { path: 'channel/:id', component: ChannelComponent },
+        { path: 'channel-details/:id', component: ChannelDatailsComponent },
   {
     path: 'register',
     component: RegisterComponent,

@@ -15,4 +15,7 @@ export class ChannelService {// غيري الرابط حسب API بتاعك
   getChannelById(id: number): Observable<any> {
     return this.http.get<any>(`http://localhost:5298/api/Channel/${id}`);
   }
+  subscribeToChannel(id: number): Observable<any> {
+    return this.http.post<any>(`http://localhost:5298/api/Channel/subscribe/${id}`, {});
+  }
 }
