@@ -14,7 +14,8 @@ import { CommonModule } from '@angular/common';
 export class ChannelDatailsComponent {
   channel: any;
   errorMessage: string = '';  // متغير لتخزين رسائل الأخطاء
-
+  isSubscribe !: boolean;
+  token : string| null = '';
   constructor(
     private route: ActivatedRoute,
     private channelService: ChannelService,
@@ -23,6 +24,8 @@ export class ChannelDatailsComponent {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.token = localStorage.getItem('authToken')
+    
     if (id) {
       this.channelService.getChannelById(id).subscribe({
         next: (data) => {
@@ -34,19 +37,44 @@ export class ChannelDatailsComponent {
         },
       });
     }
+    this.channelService.isSubscribe(id).subscribe({
+      next: (data) => {
+        this.isSubscribe = data;  // تعيين البيانات إلى المتغير channel
+      },
+    })
+
   }
+
 subscribe(id : number):void{
-this.channelService.subscribeToChannel(id).subscribe({
-  next: (data) => {
-    console.log('تم الاشتراك بنجاح', data);  // رسالة نجاح
-    this.router.navigate(['/channels']);  // إعادة التوجيه إلى صفحة القنوات
+  if(this.token == null){
+    this.router.navigate(['/login'])
+  }else{
+    this.channelService.subscribeToChannel(id).subscribe({
+      next: (data) => {
+        console.log('تم الاشتراك بنجاح', data);  // رسالة نجاح
+        window.location.reload();  
+      }
+      ,error: (err) => {
+        alert('حدث خطأ أثناء الاشتراك في القناة');  // رسالة خطأ
+      }});
   }
-  ,error: (err) => {
-    alert('حدث خطأ أثناء الاشتراك في القناة');  // رسالة خطأ
-  }});
 }
+unSubscribe(id : number):void{
+  if(this.token == null){
+    this.router.navigate(['/login'])
+  }else{
+  this.channelService.unSubscribeToChannel(id).subscribe({
+    next: (data) => {
+      console.log('تم إالغء الاشتراك بنجاح', data);  // رسالة نجاح
+      window.location.reload();  
+    }
+    ,error: (err) => {
+      alert('حدث خطأ أثناء إالغاء الاشتراك في القناة');  // رسالة خطأ
+    }});
+  }
+  }
   goToStory(id: number): void {
-    this.router.navigate(['/story', id]);
+    this.router.navigate(['/book', id]);
   }
 
 }

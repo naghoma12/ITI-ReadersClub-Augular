@@ -130,13 +130,13 @@ export class BookService {
         headers: this.getAuthHeaders()  
       });
     }
-    getFilteredStories(storyTitle?: string, category?: string, writerName?: string): Observable<any[]> {
-      let params = new HttpParams();
-  
-      if (storyTitle) params = params.set('storyTitle', storyTitle);
-      if (category) params = params.set('category', category);
-      if (writerName) params = params.set('writerName', writerName);
-  
-      return this.http.get<any[]>(`$http://localhost:5298/FilterStory`, { params });
+    getFilteredStories(title?: string): Observable<any[]> {
+        let params = new HttpParams();
+      
+        if (title) {
+          params = params.set('title', title);
+        }
+        return this.http.get<any[]>(`http://localhost:5298/api/Stories/FilterStory`, {params: params });
+      
     }
 }

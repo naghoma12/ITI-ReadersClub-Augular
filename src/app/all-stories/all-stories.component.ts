@@ -23,7 +23,35 @@ export class AllStoriesComponent {
   searchText !: string;
   constructor(private bookService: BookService,private router: Router) {}
   filterStories(): void {
-    this.bookService.getFilteredStories(this.searchText).subscribe({
+    const keyword = this.searchText.trim().toLowerCase();
+  if (!keyword) {
+    this.filteredStories = this.allStories;
+    return;
+  }
+  this.bookService.getFilteredStories(keyword).subscribe({
+    next: (data) => {
+      this.filteredStories = data;
+    },
+    error: (err) => {
+      console.error('Error loading stories', err);
+    }
+  });
+  }
+
+  ngOnInit() {
+    this.bookService.GetAllStories().subscribe({
+      next: (data) => {
+        this.filteredStories = data; // تخزين جميع الروايات
+        this.allStories = data; // تخزين جميع الروايات في متغير آخر
+      },
+      error: (err) => {
+        console.error('Error loading stories', err);
+      }
+    });
+  }
+  clearSearch(): void {
+    this.searchText = '';
+    this.bookService.getFilteredStories().subscribe({
       next: (data) => {
         this.filteredStories = data;
       },
@@ -31,20 +59,6 @@ export class AllStoriesComponent {
         console.error('Error loading stories', err);
       }
     });
-  }
-  ngOnInit() {
-    this.bookService.GetAllStories().subscribe({
-      next: (data) => {
-        this.allStories = data; // تخزين جميع الروايات
-      },
-      error: (err) => {
-        console.error('Error loading stories', err);
-      }
-    });
-  }
-  clearSearch() {
-    this.searchText = '';
-    this.filteredStories = this.filteredStories;
   }
   goToDetails(id: number) {
     this.router.navigate(['/book', id]);

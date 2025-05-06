@@ -82,6 +82,18 @@ h2.modern-title {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.unsubscribe-btn.modern-button {
+  padding: 14px 30px;
+  background-color: white; /* لون أزرق عصري */
+  color: #aa886c;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  margin-top: 0; /* تعديل الهامش العلوي */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
 
 /* عنوان قسم القصص بتصميم عصري */
 h3.modern-section-title {

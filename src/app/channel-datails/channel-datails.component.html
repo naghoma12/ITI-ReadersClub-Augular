@@ -9,7 +9,14 @@
           <h2 class="modern-title">{{ channel?.name }}</h2>
           <p class="owner modern-text">بواسطة: {{ channel?.owner.userName }}</p>
       </div>
-      <button class="subscribe-btn modern-button" (click)="subscribe(channel?.id)">اشترك</button>
+
+      @if(isSubscribe){
+      <button class="unsubscribe-btn modern-button" (click)="unSubscribe(channel?.id)">إالغاء الإشتراك</button>
+      }
+      @else{
+        <button class="subscribe-btn modern-button" (click)="subscribe(channel?.id)">اشترك</button>
+      }
+    
   </div>
 
   <p class="desc modern-text">{{ channel?.description }}</p>
