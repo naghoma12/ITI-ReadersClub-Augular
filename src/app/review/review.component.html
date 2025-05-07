@@ -1,0 +1,17 @@
+<div class="reviews-container">
+    <h2>Reviews</h2>
+    <div *ngFor="let review of reviews" class="review">
+      <p><strong>User {{ review.UserId }}:</strong></p>
+      <p>{{ review.Comment }}</p>
+      <p>Rating: {{ review.Rating }}</p>
+      <hr>
+    </div>
+  
+    <h3>Add a Review</h3>
+    <form (ngSubmit)="addReview()">
+      <textarea [(ngModel)]="newReview.Comment" name="comment" required></textarea>
+      <input type="number" [(ngModel)]="newReview.Rating" name="rating" min="1" max="5" required>
+      <button type="submit">Submit Review</button>
+    </form>
+  </div>
+  

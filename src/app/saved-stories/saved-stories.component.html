@@ -1,3 +1,5 @@
+<h2 class="section-title"> الروايات المحفوظة</h2>
+
 <div *ngIf="savedStories.length > 0; else noSavedBooks">
     <div class="book-grid">
       <mat-card class="book-card" *ngFor="let story of savedStories" (click)="goToDetails(story.id)">

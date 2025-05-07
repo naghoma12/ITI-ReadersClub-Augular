@@ -18,9 +18,10 @@
         </button>
         <span>{{ story.dislikesCount }}</span>
   
-        <button mat-icon-button color="accent" aria-label="Comment">
+        <button mat-icon-button color="accent" aria-label="Comment" (click)="showComments()">
           <mat-icon>chat_bubble</mat-icon>
         </button>
+        
       </div>
     </div>
     <div class="book-info">
@@ -58,3 +59,26 @@
     </div>
   </mat-card-content>
 </mat-card>
+
+<div class="comments-container">
+  <h3>التعليقات</h3>
+  <div class="comment" *ngFor="let review of reviews">
+    <div class="avatar">
+      <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User" />
+    </div>
+    <div class="content">
+      <div class="header">
+        <span class="username">مستخدم</span>
+        <span class="date">{{ review.createdAt | date:'short' }}</span>
+      </div>
+      <div class="rating">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <mat-icon color="warn">{{ star <= review.rating ? 'star' : 'star_border' }}</mat-icon>
+        </ng-container>
+      </div>
+      <p class="text">{{ review.comment }}</p>
+    </div>
+  </div>
+</div>
+
+

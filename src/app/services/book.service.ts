@@ -121,7 +121,7 @@ export class BookService {
   
   isStorySaved(storyId: number) {
     return this.http.get<boolean>(
-      `http://localhost:5298/api/Stories/${storyId}/is-saved`,
+      `http://localhost:5298/api/Stories/${storyId}/issaved`,
       { headers: this.getAuthHeaders() }
     );  }
   

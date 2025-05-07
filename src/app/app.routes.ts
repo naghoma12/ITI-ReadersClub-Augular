@@ -9,6 +9,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ChannelsComponent } from './channels/channels.component';
 import { SavedStoriesComponent } from './saved-stories/saved-stories.component';
 import { ChannelComponent } from './channel/channel.component';
+import { ReviewComponent } from './review/review.component';
 
 export const routes: Routes = [
   {
@@ -61,11 +62,14 @@ export const routes: Routes = [
   title: 'تغيير كلمة المرور'
 },
   { path: 'channels', component: ChannelsComponent },
+  { path: 'saved-stories', component: SavedStoriesComponent },
+  {path:'comments' ,component:ReviewComponent},
   //Must be the last route in the array
   {
     path: '**',
     component: NotFoundComponent,
     title: '404 Not Found',
   },
-  { path: 'saved-stories', component: SavedStoriesComponent },
+  
+ 
 ];

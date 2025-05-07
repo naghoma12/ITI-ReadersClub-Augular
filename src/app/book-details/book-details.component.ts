@@ -10,43 +10,57 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LogoutService } from '../services/logout.service';
+import { AddReviewDto } from '../add-review-dto';
+import { ReviewService } from '../review.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatCardModule, MatButtonModule , MatToolbarModule  ],
+  imports: [CommonModule, MatIconModule, MatCardModule, MatButtonModule , MatToolbarModule ,FormsModule ],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.css'
 })
 export class BookDetailsComponent {
   book: any;
   bookId!: number;
- 
+  like :boolean=false;
+  disLick : boolean=false;
+  saved : boolean=false;
  
   storyId!: number;
   story: any;
   isAuthorize !:boolean;
-  constructor(private bookService: BookService,private route: ActivatedRoute, private http: HttpClient, private router: Router,private snackBar: MatSnackBar
-    ,private logoutService: LogoutService
+  constructor(
+    private bookService: BookService,
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private logoutService: LogoutService,
+    private reviewService: ReviewService // جديد
   ) {}
+  
 
   ngOnInit() {
-  
     this.storyId = Number(this.route.snapshot.paramMap.get('id'));
     this.http.post(`http://localhost:5298/api/Stories/${this.storyId}/increase-views`, {})
     .subscribe({
       next: () => {
-        // ثم نجيب تفاصيل الرواية بعد نجاح زيادة المشاهدات
+       
         this.getStoryDetails(this.storyId);
         const token = localStorage.getItem('authToken');
         this.isAuthorize = !!token;
       },
       error: (err) => {
         console.error("فشل في زيادة عدد المشاهدات", err);
-        // نجيب التفاصيل حتى لو حصل خطأ في الزيادة
         this.getStoryDetails(this.storyId);
       }
     });
+
+    this.ifSaved();
+    console.log(this.saved);
+
   }
  
   LogOut(): void {
@@ -68,9 +82,7 @@ export class BookDetailsComponent {
   goBack() {
     this.router.navigate(['/allStories']);
   }
-  like :boolean=false;
-  disLick : boolean=false;
-  saved : boolean=false;
+ 
   Saved() {
     const token = localStorage.getItem('authToken');
   
@@ -90,10 +102,28 @@ export class BookDetailsComponent {
       }
     });
   }
+  ifSaved() {
+    const token = localStorage.getItem('authToken');
+  
+    if (token) {
+      this.bookService.isStorySaved(this.storyId).subscribe({
+        next: (res) => {
+          return this.saved = res;
+        },
+        error: (err) => {
+          console.error("فشل في التحقق من حالة الحفظ", err);
+        }
+      });
+      
+    }
+  
+   
+  }
+  
+
   clickLick() {
     const token = localStorage.getItem('authToken');
     if (!token) {
-      // إذا لم يكن المستخدم مسجلاً دخوله، توجيهه إلى صفحة تسجيل الدخول
       this.router.navigate(['/login']);
       return;
     }
@@ -155,6 +185,58 @@ export class BookDetailsComponent {
       });
     }
   }
+  showComments(): void {
+    console.log("Comment clicked")
+    const commentsSection = document.getElementById('commentsSection');
+    if (commentsSection) {
+      commentsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    this.loadReviews();
+  }
  
+  reviews: any[] = [];
+  newReview: AddReviewDto = {
+    StoryId: 0,
+    UserId: 0,
+    Rating: 0,
+    Comment: ''
+  };
+  
+  loadReviews() {
+    this.reviewService.getReviews(this.storyId).subscribe({
+      next: (data) => {
+        this.reviews = data;
+      },
+      error: (error) => {
+        console.error('Error loading reviews', error);
+      }
+    });
+    
+  }
+  
+  addReview() {
+    this.newReview.StoryId = this.storyId;
+  
+    const userId = Number(localStorage.getItem('userId')); 
+    if (!userId) {
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.newReview.UserId = userId;
+  
+    this.reviewService.addReview(this.newReview).subscribe({
+      next: () => {
+        this.loadReviews();
+        this.newReview.Comment = '';
+        this.newReview.Rating = 0;
+      },
+      error: (error) => {
+        console.error('Error adding review', error);
+      }
+    });
+    
+  }
+  
+  
 }
 

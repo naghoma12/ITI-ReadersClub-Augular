@@ -43,6 +43,11 @@ export class LoginComponent {
             localStorage.setItem('authToken', this.token);
             this.router.navigate(['/']);
           }
+          if (res.userId) {
+            localStorage.setItem('userId', res.userId.toString());
+            console.log('User ID from response:', res.userId);
+
+          }
           this.isLoading = false;
         },
         error: (err) => {
