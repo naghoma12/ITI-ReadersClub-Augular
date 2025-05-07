@@ -31,6 +31,6 @@ export class ChannelsComponent {
   }
  
   goToDetails(id: number): void {
-    this.router.navigate(['/channel', id]); 
+    this.router.navigate(['/channel-details', id]); 
   }
 }

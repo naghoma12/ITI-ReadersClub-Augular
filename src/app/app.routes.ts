@@ -8,8 +8,12 @@ import { VerficationCodeComponent } from './verfication-code/verfication-code.co
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChannelsComponent } from './channels/channels.component';
 import { SavedStoriesComponent } from './saved-stories/saved-stories.component';
+<<<<<<< HEAD
 import { ChannelComponent } from './channel/channel.component';
 import { ReviewComponent } from './review/review.component';
+=======
+import { ChannelDatailsComponent } from './channel-datails/channel-datails.component';
+>>>>>>> dba273cb0c918455e664310a452b4bea035ce487
 
 export const routes: Routes = [
   {
@@ -26,7 +30,7 @@ export const routes: Routes = [
   },
   
         { path: 'chanels', component: ChannelsComponent },
-        { path: 'channel/:id', component: ChannelComponent },
+        { path: 'channel-details/:id', component: ChannelDatailsComponent },
   {
     path: 'register',
     component: RegisterComponent,

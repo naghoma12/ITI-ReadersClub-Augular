@@ -67,10 +67,6 @@ Books Grid
       />
       <mat-card-content>
         <h3>{{ book.title }}</h3>
-        <p class="channel">{{ book.channelName }}</p>
-        <!-- ✅ اسم القناة -->
-        <p class="category">التصنيف: {{ book.categoryName }}</p>
-        <p>التقييم: {{ book.averageRating }}</p>
         <div class="stars">
           <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
             <mat-icon color="warn">
@@ -84,6 +80,14 @@ Books Grid
             </mat-icon>
           </ng-container>
         </div>
+        <p class="category">التصنيف: {{ book.categoryName }}</p>
+        <p class="channel">
+          <img [src]="book.channelImage" class="channel-img" alt="Channel Image" />
+          {{ book.channelName }}
+        </p>
+        
+        <!-- ✅ اسم القناة -->
+        
       </mat-card-content>
     </mat-card>
   </div>

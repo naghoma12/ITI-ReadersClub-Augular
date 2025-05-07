@@ -34,7 +34,7 @@ import { ForgetPasswordComponent } from './app/forget-password/forget-password.c
 import { VerficationCodeComponent } from './app/verfication-code/verfication-code.component';
 import { ResetPasswordComponent } from './app/reset-password/reset-password.component';
 import { ChannelsComponent } from './app/channels/channels.component';
-import { ChannelComponent } from './app/channel/channel.component';
+import { ChannelDatailsComponent } from './app/channel-datails/channel-datails.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -50,7 +50,7 @@ bootstrapApplication(AppComponent, {
       {path : 'reset-password', component: ResetPasswordComponent},
       { path: 'allStories', component: AllStoriesComponent },
       { path: 'chanels', component: ChannelsComponent },
-      { path: 'channel/:id', component: ChannelComponent },
+      { path: 'channel-details/:id', component: ChannelDatailsComponent },
       {path:'**', component: NotFoundComponent}
     ]),
     provideHttpClient(),

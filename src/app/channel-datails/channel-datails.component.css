@@ -1,0 +1,170 @@
+/* حاوية تفاصيل القناة - تصميم عصري */
+.channel-details-container.modern-view {
+  max-width: 900px; /* تقليل العرض الأقصى لتحسين التركيز */
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff; /* خلفية بيضاء نظيفة */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* ظل أكثر بروزًا ونعومة */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط عصري */
+}
+
+.channel-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* صورة القناة بتصميم عصري */
+.detail-img.modern-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-right: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.detail-img.modern-img:hover {
+  transform: scale(1.05);
+}
+
+.channel-info {
+  flex-grow: 1;
+}
+
+/* عنوان القناة بتصميم عصري */
+h2.modern-title {
+  font-size: 2.2rem;
+  color: #2c3e50; /* لون أغمق وأكثر احترافية */
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-weight: 600;
+  padding-right: 10px;
+}
+
+/* معلومات المالك بتصميم عصري */
+.owner.modern-text {
+  font-size: 1.1rem;
+  color: #546e7a; /* لون ثانوي هادئ */
+  margin: 0;
+  padding-right: 15px;
+}
+
+/* وصف القناة بتصميم عصري */
+.desc.modern-text {
+  font-size: 1.05rem;
+  color: #34495e;
+  line-height: 1.7;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding-right: 30px;
+}
+
+/* زر الاشتراك بتصميم عصري */
+.subscribe-btn.modern-button {
+  padding: 14px 30px;
+  background-color: #aa886c; /* لون أزرق عصري */
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  margin-top: 0; /* تعديل الهامش العلوي */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.subscribe-btn.modern-button:hover {
+  background-color: #b39b88;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.unsubscribe-btn.modern-button {
+  padding: 14px 30px;
+  background-color: white; /* لون أزرق عصري */
+  color: #aa886c;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  margin-top: 0; /* تعديل الهامش العلوي */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* عنوان قسم القصص بتصميم عصري */
+h3.modern-section-title {
+  font-size: 1.7rem;
+  color: #2c3e50;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0; /* إضافة خط سفلي أنيق */
+  padding-bottom: 10px;
+}
+
+/* تخطيط حاوية القصص بتصميم عصري */
+.stories-container.modern-stories-container {
+  display: grid; /* استخدام Grid Layout لتوزيع أكثر مرونة */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* أعمدة مرنة */
+  gap: 25px;
+  justify-content: start;
+  margin-top: 15px;
+  direction: rtl;
+}
+
+/* الكارت الدائري للقصة بتصميم عصري */
+.story-card.modern-story-card {
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+}
+
+.story-card.modern-story-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* الصورة الدائرية داخل إطار بتصميم عصري */
+.story-image-wrapper.modern-story-image-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: 15px auto 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #f0f0f0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* صورة القصة بتصميم عصري */
+.story-img.modern-story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.story-card.modern-story-card:hover .story-img.modern-story-img {
+  transform: scale(1.05);
+}
+
+/* معلومات القصة أسفل الصورة بتصميم عصري */
+.story-info.modern-story-info h4.modern-story-title {
+  font-size: 1.05rem;
+  color: #2c3e50;
+  margin: 8px 0 5px;
+  font-weight: 500;
+}
+
+.story-info.modern-story-info p.modern-story-category {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0 0 15px;
+}

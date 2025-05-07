@@ -1,29 +1,40 @@
+<div class="modern-search-bar">
+  <mat-form-field class="search-input" appearance="outline">
+    <input
+      matInput
+      [(ngModel)]="searchText"
+      placeholder="ابحث عن رواية أو كاتب"
+      (keyup.enter)="filterStories()"
+    />
+  </mat-form-field>
 
-<h2 class="section-title">كل الروايات </h2>
-<div class="saved-stories-section">
-    <button mat-raised-button color="primary" (click)="goToSavedStories()">رواياتي المحفوظة</button>
+  <button mat-raised-button color="primary"(click)="filterStories()">
+    <mat-icon>search</mat-icon>بحث
+  </button>
+</div>
+<div *ngIf="filteredStories.length > 0; else noBooks">
+  <div class="book-grid">
+    <mat-card class="book-card" *ngFor="let book of filteredStories" (click)="goToDetails(book.id)">
+      <img mat-card-image [src]="book.cover" alt="{{ book.title }}">
+      <mat-card-content>
+        <h3>{{ book.title }}</h3>
+        <div class="stars">
+          <ng-container *ngFor="let star of [1,2,3,4,5]">
+            <mat-icon color="warn">
+              {{ book.averageRating >= star ? 'star' : (book.averageRating >= star - 0.5 ? 'star_half' : 'star_border') }}
+            </mat-icon>
+          </ng-container>
+        </div>
+        <p class="category">التصنيف: {{ book.categoryName }}</p>
+        <p class="channel">
+          <img [src]="book.channelImage" class="channel-img" alt="Channel Image" />
+          {{ book.channelName }}
+        </p>
+       
+      </mat-card-content>
+    </mat-card>
   </div>
-
-   <div *ngIf="allStories.length > 0; else noBooks">
-    <div class="book-grid">
-      <mat-card class="book-card" *ngFor="let book of allStories" (click)="goToDetails(book.id)">
-        <img mat-card-image [src]="book.cover" alt="{{ book.title }}">
-        <mat-card-content>
-          <h3>{{ book.title }}</h3>
-          <p class="channel">{{ book.channelName }}</p> <!-- ✅ اسم القناة -->
-          <p class="category">التصنيف: {{ book.categoryName }}</p>
-          <p>التقييم: {{ book.averageRating }}</p>
-          <div class="stars">
-            <ng-container *ngFor="let star of [1,2,3,4,5]">
-              <mat-icon color="warn">
-                {{ book.averageRating >= star ? 'star' : (book.averageRating >= star - 0.5 ? 'star_half' : 'star_border') }}
-              </mat-icon>
-            </ng-container>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-  <ng-template #noBooks>
-    <p>لا توجد روايات لعرضها في الوقت الحالي.</p>
-  </ng-template>
+</div>
+<ng-template #noBooks>
+  <p>لا توجد روايات لعرضها في الوقت الحالي.</p>
+</ng-template>
