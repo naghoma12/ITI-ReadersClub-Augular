@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-header',
@@ -16,13 +17,23 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class HeaderComponent {
   isAuthorize !:boolean;
-
+userImage!: string;
   ngOnInit(): void {
 
     const token = localStorage.getItem('authToken');
     this.isAuthorize = !!token;
+
+    this.profile.getUserImage().subscribe({
+      next: (res) => {
+        console.log('User image response:', res);
+        this.userImage = res.image;
+        console.log('User image:', this.userImage);
+      },
+      error: (err) => {
+        console.error('Error fetching user image:', err);
+      }});
   }
-  constructor(private router: Router, private logoutService: LogoutService) {}
+  constructor(private router: Router, private logoutService: LogoutService,private profile : ProfileService) {}
   LogOut(): void {
     this.logoutService.logout({}).subscribe({
       next: () => {

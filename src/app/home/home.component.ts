@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.isScrolled = scrollTop > 50;
   }
   popularBooks: any[] = [];
-
+  mostViewedStories : any[] = [];
 
 
   constructor(private bookService: BookService, private router: Router,private logoutService: LogoutService) {}
@@ -50,8 +50,17 @@ export class HomeComponent implements OnInit {
       },
       // error: (err) => console.error(err),
     });
+    this.bookService.getMostViewedBooks().subscribe({
+      next:(data)=> {
+        this.mostViewedStories = data;
+      }
+    })
   }
-
+getStarIcon(rating: number, star: number): string {
+  if (rating >= star) return 'star';
+  else if (rating >= star - 0.5) return 'star_half';
+  else return 'star_border';
+}
   goToDetails(id: number): void {
     this.router.navigate(['/book', id]);
   }

@@ -18,11 +18,28 @@ export class AppComponent {
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Define routes where you don't want the header
-        const hiddenHeaderRoutes = ['/login', '/register','/forget-password', '/varfication-code', '/reset-password'];
-        this.showHeader = !hiddenHeaderRoutes.includes(event.urlAfterRedirects);
-      }
-    });
-  }
+    if (event instanceof NavigationEnd) {
+      // Define routes where you don't want the header
+      const hiddenHeaderRoutes = [
+        '/login',
+        '/register',
+        '/forget-password',
+        '/varfication-code',
+        '/reset-password',
+        '/profile'
+      ];
+
+      const dynamicRoutes = [
+        /^\/book\/\d+$/, // matches /book/123 or /book/456 etc.
+        /^\/profile-update\/\d+$/
+      ];
+
+      const url = event.urlAfterRedirects;
+
+      const isStaticMatch = hiddenHeaderRoutes.includes(url);
+      const isDynamicMatch = dynamicRoutes.some(regex => regex.test(url));
+
+      this.showHeader = !(isStaticMatch || isDynamicMatch);
+    }
+  });}
 }

@@ -10,10 +10,10 @@ export class ChannelService {// غيري الرابط حسب API بتاعك
   constructor(private http: HttpClient) {}
 
   getAllChannels(): Observable<any> {
-    return this.http.get<any>('http://localhost:5298/api/Channel');
+    return this.http.get<any>('http://readersclubapi.runasp.net/api/Channel');
   }
   getChannelById(id: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:5298/api/Channel/${id}`);
+    return this.http.get<any>(`http://readersclubapi.runasp.net/api/Channel/${id}`);
   }
   subscribeToChannel(id: number): Observable<any> {
     const token = localStorage.getItem('authToken'); // or wherever you store your token
@@ -21,7 +21,7 @@ export class ChannelService {// غيري الرابط حسب API بتاعك
       'Authorization': `Bearer ${token}`
     });
   
-    return this.http.post<any>(`http://localhost:5298/api/Channel/Subscribe/${id}`, {},
+    return this.http.post<any>(`http://readersclubapi.runasp.net/api/Channel/Subscribe/${id}`, {},
       { headers: headers } 
     );
   }
@@ -32,7 +32,7 @@ export class ChannelService {// غيري الرابط حسب API بتاعك
       'Authorization': `Bearer ${token}`
     });
   
-    return this.http.post<any>(`http://localhost:5298/api/Channel/UnSubscribe/${id}`, {},
+    return this.http.post<any>(`http://readersclubapi.runasp.net/api/Channel/UnSubscribe/${id}`, {},
       { headers: headers } 
     );
   }
@@ -42,7 +42,7 @@ export class ChannelService {// غيري الرابط حسب API بتاعك
       'Authorization': `Bearer ${token}`
     });
   
-    return this.http.get(`http://localhost:5298/api/Channel/IsSubscribed/${id}`,
+    return this.http.get(`http://readersclubapi.runasp.net/api/Channel/IsSubscribed/${id}`,
        { headers: headers }
     );
   }

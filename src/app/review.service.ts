@@ -8,12 +8,12 @@ import { AddReviewDto } from './add-review-dto';
 })
 export class ReviewService {
 
-  private apiUrl = `http://localhost:5298/api/Review/AddReview`;
-  private apiUrl1=`http://localhost:5298/api/Review/GetAllReviewsInStory?storyId=1`;
+  private apiUrl = `http://readersclubapi.runasp.net/api/Review/AddReview`;
+  private apiUrl1=`http://readersclubapi.runasp.net/api/Review/GetAllReviewsInStory?storyId=1`;
 
   constructor(private http: HttpClient) { }
   getReviews(storyId: number): Observable<any> {
-    return this.http.get(`http://localhost:5298/api/Review/GetAllReviewsInStory?storyId=${storyId}`);
+    return this.http.get(`http://readersclubapi.runasp.net/api/Review/GetAllReviewsInStory?storyId=${storyId}`);
   }
 
   // إضافة كومينت

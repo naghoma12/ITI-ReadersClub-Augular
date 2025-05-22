@@ -1,0 +1,62 @@
+<div class="card glass-card border-0 shadow-lg my-4 w-75 mx-auto mt-4">
+  <div class="card-body p-4">
+    <div class="row">
+      <!-- Right Side: Profile Info -->
+      <div class="col-md-4 d-flex flex-column align-items-center text-center">
+        <!-- صورة البروفايل -->
+        <div class="image-section position-relative mb-3">
+          <img [src]="user.image" class="profile-image rounded-circle border" alt="Profile" />
+          <label for="profileImage" class="change-image-label">
+            <i class="fas fa-camera"></i>
+          </label>
+          <input type="file" id="profileImage" hidden (change)="onImageSelected($event)" />
+        </div>
+
+        <!-- الاسم -->
+        <h3 class="mb-2  fw-semibold" style="color:#2c3e50 ;">{{ user.name }}</h3>
+
+        <!-- زر التعديل -->
+        <div *ngIf="!isEditing">
+          <button class="btn edit-btn" (click)="onEditProfile(user.id)">
+            <i class="fas fa-edit me-2"></i> تعديل الملف الشخصي
+          </button>
+        </div>
+      </div>
+
+      <!-- Left Side: Saved Stories / Channels -->
+      <div class="col-md-8 mb-4">
+        <ng-container *ngIf="user.role === 'reader' && user.savedStories?.length > 0">
+          <h3 class="modern-section-title">
+            <i class="bi bi-bookmark-heart-fill me-2 text-secondary"></i> الروايات المحفوظة
+          </h3>
+          <div class="stories-container modern-stories-container">
+            <div *ngFor="let story of user.savedStories" class="story-card modern-story-card" (click)="goToStory(story.id)">
+              <div class="story-image-wrapper modern-story-image-wrapper">
+                <img [src]="story.image" class="story-img modern-story-img" alt="صورة القصة" />
+              </div>
+              <div class="story-info modern-story-info">
+                <h4 class="modern-story-title">{{ story.title }}</h4>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="user.role === 'author' && user.channels?.length > 0">
+          <h3 class="modern-section-title">
+          <mat-icon >live_tv</mat-icon> القنوات الخاصة بك
+          </h3>
+          <div class="stories-container modern-stories-container">
+            <div *ngFor="let channel of user.channels" class="story-card modern-story-card" (click)="goToChannel(channel.id)">
+              <div class="story-image-wrapper modern-story-image-wrapper">
+                <img [src]="channel.image" class="story-img modern-story-img" alt="صورة القناة" />
+              </div>
+              <div class="story-info modern-story-info">
+                <h4 class="modern-story-title">{{ channel.name }}</h4>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

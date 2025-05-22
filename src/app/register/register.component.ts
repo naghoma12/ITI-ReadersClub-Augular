@@ -47,9 +47,15 @@ export class RegisterComponent {
       this.registerService.register(userData).subscribe({
         next: (res: any) => {
           this.token = res.token;
+          console.log('Token from response:', this.token);
           if (this.token) {
             localStorage.setItem('authToken', this.token);
             this.router.navigate(['/']);
+          }
+          if (res.userId) {
+            localStorage.setItem('userId', res.userId.toString());
+            console.log('User ID from response:', res.userId);
+
           }
           this.isLoading = false;
         },

@@ -8,12 +8,10 @@ import { VerficationCodeComponent } from './verfication-code/verfication-code.co
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChannelsComponent } from './channels/channels.component';
 import { SavedStoriesComponent } from './saved-stories/saved-stories.component';
-<<<<<<< HEAD
-import { ChannelComponent } from './channel/channel.component';
-import { ReviewComponent } from './review/review.component';
-=======
 import { ChannelDatailsComponent } from './channel-datails/channel-datails.component';
->>>>>>> dba273cb0c918455e664310a452b4bea035ce487
+import { ReviewComponent } from './review/review.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 export const routes: Routes = [
   {
@@ -42,7 +40,10 @@ export const routes: Routes = [
     component: LoginComponent,
     title: 'تسجيل الدخول',
   },
-
+{
+  path: 'profile-update/:id',
+  component: ProfileUpdateComponent
+},
   {
     path: 'allStories',
     loadComponent: () =>
@@ -59,7 +60,10 @@ export const routes: Routes = [
     component: VerficationCodeComponent,
     title: 'التحقق من الرمز'
   },
-
+{
+  path: 'profile',
+  component: ProfileComponent
+},
 {
   path: 'reset-password',
   component: ResetPasswordComponent,

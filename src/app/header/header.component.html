@@ -1,25 +1,67 @@
-<mat-toolbar class="navbar" color="transparent" dir="rtl">
+<!-- <mat-toolbar class="navbar" color="transparent" dir="rtl">
     <span class="logo">
       <img src="../assets/logo-removebg-preview.png" alt="لوجو نادي القراء" class="logo-img">
       نادى القراء
     </span>
     
-    <span class="spacer"></span>
     <div class="nav-links">
-      <a mat-button routerLink="/">الرئيسية</a>
-      <a mat-button routerLink="/channels">جميع القنوات</a>
-      <a mat-button routerLink="/allStories">الروايات</a>
-      <!-- If user is NOT authorized -->
+      <a  routerLink="/"> الصفحه الرئيسه </a>
+      <a  routerLink="/allStories"> الروايات </a>
+      <a  routerLink="/channels"> جميع القنوات </a>
       <ng-container *ngIf="!isAuthorize">
-        <a routerLink="/register" mat-button>إنشاء حساب</a>
-        <a routerLink="/login" mat-button>تسجيل الدخول</a>
+        <a routerLink="/register" style="padding-left: 10px;"> إنشاء حساب </a>
+        <a routerLink="/login" style="padding-left: 10px;"> تسجيل الدخول </a>
       </ng-container>
   
-      <!-- If user IS authorized -->
       <ng-container *ngIf="isAuthorize">
-        <button mat-button (click)="LogOut()">تسجيل الخروج</button>
-        <a routerLink="/profile" mat-button>حسابي</a>
+        <a routerLink="/login" (click)="LogOut()">تسجيل الخروج</a>
+        <a routerLink="/profile" style="padding-left: 10px;">
+          <img [src]="userImage" alt="User" class="avatar" >
+        </a>
       </ng-container>
     </div>
   </mat-toolbar>
-  
+   -->
+
+   <mat-toolbar class="navbar" color="transparent" dir="rtl">
+  <span class="logo">
+    <img src="../assets/logo-removebg-preview.png" alt="لوجو نادي القراء" class="logo-img">
+    نادى القراء
+  </span>
+
+  <div class="nav-links">
+    <a routerLink="/" matTooltip="الصفحة الرئيسية">
+      <mat-icon>home</mat-icon>
+      الصفحة الرئيسية
+    </a>
+    <a routerLink="/allStories" matTooltip="كل الروايات">
+      <mat-icon>menu_book</mat-icon>
+      الروايات
+    </a>
+    <a routerLink="/channels" matTooltip="قنوات القراءة">
+      <mat-icon>live_tv</mat-icon>
+      القنوات
+    </a>
+
+    <ng-container *ngIf="!isAuthorize">
+      <a routerLink="/register" matTooltip="إنشاء حساب">
+        <mat-icon>person_add</mat-icon>
+        إنشاء حساب
+      </a>
+      <a routerLink="/login" matTooltip="تسجيل الدخول">
+        <mat-icon>login</mat-icon>
+        تسجيل الدخول
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isAuthorize">
+      <a (click)="LogOut()" matTooltip="تسجيل الخروج">
+        <mat-icon>logout</mat-icon>
+        تسجيل الخروج
+      </a>
+      <a routerLink="/profile" matTooltip="الملف الشخصي">
+        <img [src]="userImage" alt="User" class="avatar">
+      </a>
+    </ng-container>
+  </div>
+</mat-toolbar>

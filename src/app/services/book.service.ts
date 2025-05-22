@@ -8,8 +8,8 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class BookService {
 
   
-  private apiUrl = 'http://localhost:5298/api/Stories/popular'; 
-  private apiUrl2 = 'http://localhost:5298/api/Stories';
+  private apiUrl = 'http://readersclubapi.runasp.net/api/Stories/popular'; 
+  private apiUrl2 = 'http://readersclubapi.runasp.net/api/Stories';
   constructor(private http: HttpClient) {}
 
   private getAuthHeaders(): HttpHeaders {
@@ -26,6 +26,10 @@ export class BookService {
   getPopularBooks(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+  getMostViewedBooks(): Observable<any[]> {
+    return this.http.get<any[]>("http://readersclubapi.runasp.net/api/Stories/MostViewed");
+  }
+  
   
   GetAllStories(): Observable<any[]> {
 
@@ -35,13 +39,13 @@ export class BookService {
  
   getStoryDetails(storyId: number): Observable<any[]> {
 
-    return this.http.get<any[]>(`http://localhost:5298/api/Stories/${storyId}`);
+    return this.http.get<any[]>(`http://readersclubapi.runasp.net/api/Stories/${storyId}`);
 
   }
 
   increaseViews(storyId: number): Observable<any> {
     return this.http.post(
-      `http://localhost:5298/api/Stories/${storyId}/increase-views`,
+      `http://readersclubapi.runasp.net/api/Stories/${storyId}/increase-views`,
       {},
       { headers: this.getAuthHeaders() }
     );
@@ -53,7 +57,7 @@ export class BookService {
     }
 
     return this.http.post(
-      `http://localhost:5298/api/Stories/${storyId}/like`, 
+      `http://readersclubapi.runasp.net/api/Stories/${storyId}/like`, 
       {},
       { headers: this.getAuthHeaders() }
     ).pipe(
@@ -70,7 +74,7 @@ export class BookService {
     }
 
     return this.http.post(
-      `http://localhost:5298/api/Stories/${storyId}/dislike`, 
+      `http://readersclubapi.runasp.net/api/Stories/${storyId}/dislike`, 
       {},
       { headers: this.getAuthHeaders() }
     ).pipe(
@@ -87,7 +91,7 @@ export class BookService {
     }
   
     return this.http.post(
-      `http://localhost:5298/api/Stories/${storyId}/unlike`,
+      `http://readersclubapi.runasp.net/api/Stories/${storyId}/unlike`,
       {},
       { headers: this.getAuthHeaders() }
     ).pipe(
@@ -105,7 +109,7 @@ export class BookService {
     }
   
     return this.http.post(
-      `http://localhost:5298/api/Stories/${storyId}/undislike`,
+      `http://readersclubapi.runasp.net/api/Stories/${storyId}/undislike`,
       {},
       { headers: this.getAuthHeaders() }
     ).pipe(
@@ -116,17 +120,17 @@ export class BookService {
     );
   }
   toggleSaveStory(storyId: number) {
-    return this.http.post<{ isSaved: boolean }>(`http://localhost:5298/api/Stories/${storyId}/toggle-save`, {}, { headers: this.getAuthHeaders() });
+    return this.http.post<{ isSaved: boolean }>(`http://readersclubapi.runasp.net/api/Stories/${storyId}/toggle-save`, {}, { headers: this.getAuthHeaders() });
   }
   
   isStorySaved(storyId: number) {
     return this.http.get<boolean>(
-      `http://localhost:5298/api/Stories/${storyId}/issaved`,
+      `http://readersclubapi.runasp.net/api/Stories/${storyId}/issaved`,
       { headers: this.getAuthHeaders() }
     );  }
   
     getSavedStories() {
-      return this.http.get<any[]>(`http://localhost:5298/api/Stories/saved`, {
+      return this.http.get<any[]>(`http://readersclubapi.runasp.net/api/Stories/saved`, {
         headers: this.getAuthHeaders()  
       });
     }
@@ -136,7 +140,25 @@ export class BookService {
         if (title) {
           params = params.set('title', title);
         }
-        return this.http.get<any[]>(`http://localhost:5298/api/Stories/FilterStory`, {params: params });
+        return this.http.get<any[]>(`http://readersclubapi.runasp.net/api/Stories/FilterStory`, {params: params });
       
+    }
+    setStoryAsReader(storyId : number)
+    {
+       const token = localStorage.getItem('authToken');
+    if (!token) {
+      return throwError('You must be logged in to unlike a story');
+    }
+  
+    return this.http.post(
+      `http://localhost:5298/api/Stories/SetLastPage?storyId=${storyId}`,
+      {},
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      catchError(err => {
+        console.error("Error unliking story", err);
+        return throwError(err); // إرجاع الخطأ في حال فشل الطلب
+      })
+    );
     }
 }

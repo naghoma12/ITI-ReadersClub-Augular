@@ -11,7 +11,7 @@ export class LoginService {
 constructor(private http : HttpClient) {}
 
    login(userData: any): Observable<any> {
-    return this.http.post(`http://localhost:5298/api/Security/Login`, userData)
+    return this.http.post(`http://readersclubapi.runasp.net/api/Security/Login`, userData)
       .pipe(
         catchError(error => {
           console.error('خطأ في التسجيل من API:', error);

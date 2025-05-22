@@ -1,57 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* مسافة بين الصورة والنص */
-    font-size: 24px;
-    font-weight: bold;
-    color: #2c3e50; /* لون أنيق للنص */
-    font-family: 'Cairo', sans-serif; /* خط عربي جميل */
-  }
-  
-  .logo-img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    border-radius: 50%; /* زوايا ناعمة */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* ظل خفيف للصورة */
-  }
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&display=swap');
 
-/* Navbar */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
+  padding: 0 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'El Messiri', sans-serif;
+  border-bottom: 2px solid #eee;
 }
 
-/*  */
-.navbar button{
-  border: none;
-  padding: 12px 10px;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: 0.3s;
-  cursor: pointer;
-  margin-left: 3px;
-}
-.navbar button:hover {
-  background-color: #A27B5C;
-  color: white;
-}
-.navbar-container {
+.logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background-color: #f6f6f6;
-  border-radius: 0 0 30px 30px;
-}
-.logo {
+  gap: 12px;
   font-size: 24px;
   font-weight: bold;
-  margin-left: 10px;
+  color: #2c3e50;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #A27B5C;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2c3e50;
+  transition: transform 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
 }

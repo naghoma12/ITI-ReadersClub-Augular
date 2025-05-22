@@ -1,84 +1,79 @@
+<div class="container mt-5 mb-4" dir="rtl">
+  <!-- الرواية -->
+  <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+    <div class="card-body p-5">
+      <div class="row g-4">
+        <!-- صورة الغلاف والصوت -->
+        <div class="col-md-5 d-flex flex-column align-items-center">
+          <img [src]="story.cover" alt="غلاف الرواية" class="img-fluid rounded-3 shadow-sm" width="350" height="400" style="max-height: 500px; object-fit: cover;" />
+          <audio controls class="w-100 mt-4 rounded modern-audio">
+            <source [src]="story.audio" type="audio/mpeg" />
+            المتصفح لا يدعم تشغيل الصوت.
+          </audio>
+        </div>
 
-<mat-card class="book-details-card" *ngIf="story">
-  <button mat-icon-button class="save-button" aria-label="Save" >
-    <mat-icon [ngStyle]="{'color': saved ? 'green' : 'gray'}" (click)="Saved()">bookmark</mat-icon>
-  </button>
-  <div class="book-header">
-    <div class="left-side">
-      <img [src]="story.cover" alt="{{ story.title }}" class="book-cover" />
-  
-      <div class="interaction-buttons">
-        <button mat-icon-button  >
-          <mat-icon [ngStyle]="{'color': like ? 'green' : 'gray'}" aria-label="Like" (click)="clickLick()">thumb_up</mat-icon>
-        </button>
-        <span>{{ story.likesCount }}</span>
-  
-        <button mat-icon-button  aria-label="Dislike" (click)="clickdisLick()">
-          <mat-icon [ngStyle]="{'color': disLick ? 'green' : 'gray'}" >thumb_down</mat-icon>
-        </button>
-        <span>{{ story.dislikesCount }}</span>
-  
-        <button mat-icon-button color="accent" aria-label="Comment" (click)="showComments()">
-          <mat-icon>chat_bubble</mat-icon>
-        </button>
-        
+        <!-- التفاصيل -->
+        <div class="col-md-7">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <h2 class="fw-bold" style="color: #2c3e50;">{{ story.title }}</h2>
+            <button class="btn btn-light shadow-sm save-button rounded-circle" (click)="Saved()" aria-label="Save">
+              <i class="bi" [ngClass]="saved ? 'bi-bookmark-fill' : 'bi-bookmark'" style="font-size: 30px; color: #A27B5C;"></i>
+            </button>
+          </div>
+
+          <!-- تفاعل -->
+          <div class="interaction-buttons mb-4">
+    
+            <button (click)="clickLick()" class="interaction-btn">
+              <i class="bi bi-hand-thumbs-up" [ngStyle]="{'color': like ? '#A27B5C' : 'gray'}"></i>
+              <span>{{ story.likesCount }}</span>
+            </button>
+
+            <button (click)="clickdisLick()" class="interaction-btn">
+              <i class="bi bi-hand-thumbs-down" [ngStyle]="{'color': disLick ? '#A27B5C' : 'gray'}"></i>
+              <span>{{ story.dislikesCount }}</span>
+            </button>
+
+            <div class="view-count">
+              <i class="bi bi-eye text-muted me-1"></i> {{ story.viewsCount }}
+            </div>
+          </div>
+
+          <!-- الوصف والملخص -->
+          <p class="text-muted"><strong class="text-dark">الوصف الكامل:</strong> {{ story.description }}</p>
+          <p class="text-muted"><strong class="text-dark">الملخص:</strong> {{ story.summary }}</p>
+
+          <!-- إجراءات -->
+          <div class="actions mt-4 text-center">
+            <button (click)="openPdf()" class="btn btn-dark w-100 mb-3 shadow-sm">
+              <i class="bi bi-book me-2 p-2"></i> قراءة الرواية
+            </button>
+            <a [href]="story.pdfUrl" download="download.pdf" class="download-link d-block">
+              <i class="bi bi-download me-2"></i> تحميل الرواية
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="book-info">
-      <h2>{{ story.title }}</h2>
-      <p><strong>القناة:</strong> {{ story.channelName }}</p>
-      <p><strong>التصنيف:</strong> {{ story.categoryName }}</p>
-      <div class="stars">
-        <ng-container *ngFor="let star of [1,2,3,4,5]">
-          <mat-icon color="warn">
-            {{ story.averageRating >= star ? 'star' : (story.averageRating >= star - 0.5 ? 'star_half' : 'star_border') }}
-          </mat-icon>
-        </ng-container>
-      </div>
-      <p><strong>عدد المشاهدات:</strong> {{ story.viewsCount }}</p>
-      <p><strong>الإعجابات:</strong> {{ story.likesCount }}</p>
-      <p><strong>عدم الإعجاب:</strong> {{ story.dislikesCount }}</p>
     </div>
   </div>
 
-  <mat-card-content class="description">
-    <h3>الوصف</h3>
-    <p>{{ story.description }}</p>
+  <!-- التعليقات -->
+  <div class="card mt-4 p-4 shadow rounded-4 border-0">
+    <h4 class="mb-4 text-dark fw-semibold">
+      <i class="bi bi-chat-dots me-2"></i> التعليقات
+    </h4>
 
-    <h3>الملخص</h3>
-    <p>{{story.summary }}</p>
-
-    <div class="actions">
-      <a mat-raised-button color="primary" *ngIf="story.file" [href]="story.file" target="_blank">
-        📖 قراءة الرواية
-      </a>
-          
-      <a mat-raised-button color="accent"  *ngIf="story.audio" [href]="story.audio" target="_blank">
-        🔊 استمع للرواية
-      </a>
+    <!-- إضافة تعليق -->
+    <div class="mb-4">
+      <textarea class="form-control shadow-sm" rows="3" [(ngModel)]="newReview.Comment" placeholder="اكتب تعليقك هنا..."></textarea>
+      <button class="btn btn-primary mt-2 px-4" style="background-color: #A27B5C; border: none;" (click)="addReview()">إضافة التعليق</button>
     </div>
-  </mat-card-content>
-</mat-card>
 
-<div class="comments-container">
-  <h3>التعليقات</h3>
-  <div class="comment" *ngFor="let review of reviews">
-    <div class="avatar">
-      <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User" />
-    </div>
-    <div class="content">
-      <div class="header">
-        <span class="username">مستخدم</span>
-        <span class="date">{{ review.createdAt | date:'short' }}</span>
-      </div>
-      <div class="rating">
-        <ng-container *ngFor="let star of [1,2,3,4,5]">
-          <mat-icon color="warn">{{ star <= review.rating ? 'star' : 'star_border' }}</mat-icon>
-        </ng-container>
-      </div>
-      <p class="text">{{ review.comment }}</p>
+    <!-- التعليقات المعروضة -->
+    <div *ngFor="let comment of reviews" class="border-bottom pb-3 mb-3 text-dark">
+      <strong>{{ comment.userName }}</strong>
+      <p class="mb-1">{{ comment.comment }}</p>
+      <small class="text-muted">{{ comment.createdDate | date:'short' }}</small>
     </div>
   </div>
 </div>
-
-

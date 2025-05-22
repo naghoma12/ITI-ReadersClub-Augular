@@ -11,7 +11,7 @@ constructor(private http : HttpClient) {
 
    }
    forgetPassword(email: string): Observable<any> {
-    return this.http.post(`http://localhost:5298/api/Security/ForgetPassword`, {email})
+    return this.http.post(`http://readersclubapi.runasp.net/api/Security/ForgetPassword`, {email})
       .pipe(
         catchError(error => {
           console.error('خطأ في التسجيل من API:', error);

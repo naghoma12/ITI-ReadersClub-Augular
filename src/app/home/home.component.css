@@ -6,18 +6,16 @@
 }
 
 .hero-section {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ebayimg.com/images/g/6o8AAOSwMYpg3osu/s-l1200.jpg');
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/taylor-D9_QOTmbFAg-unsplash.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   text-align: center;
-  /* background: linear-gradient(to left, #f857a6, #ff5858); */
   color: white;
-  /* padding: 80px 20px; */
   border-radius: 0 0 30px 30px;
   direction: rtl;
   text-align: center;
@@ -97,7 +95,7 @@
   font-size: 35px;
   margin: 80px 60px 50px ;
   /* text-align: center; */
-  color: #141415;
+  color: #2c3e50;
   font-family: "Rakkas", serif;
   font-weight: 400;
   font-style: normal;
@@ -110,12 +108,15 @@
   gap: 20px;
   padding: 0 10px 5px;
   margin-bottom: 20px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .book-card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
   cursor: pointer;
+  background-color: white;
   width: 170px;
 }
 
@@ -126,14 +127,14 @@
 .book-card img {
   height: 170px;
   object-fit: inherit;
-  padding: 5px;
+  padding: 3px;
 }
 
 .book-card h3 {
-  margin: 10px 0 7px;
   font-weight: bold;
   font-family: "El Messiri", sans-serif;
   text-align: right;
+  color: #2c3e50;
   /* color: #A27B5C; */
   font-size: 16px;
   text-align: center;
@@ -142,29 +143,31 @@
 .channel {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
+  color: #2c3e50;
 }
 
 .channel-img {
-  width: 27px !important;
-  height: 27px !important;
+  width: 30px !important;
+  height: 30px !important;
   border-radius: 50%;
   object-fit: fill;
   flex-shrink: 0;
 }
 
 .category{
-  color: #A02334;
+  color: #A27B5C;
   font-weight: 900;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 3px;
 }
 .stars mat-icon {
   font-size: 20px;
   vertical-align: middle;
+  color: #A27B5C;
 }
 
 .about-section , .idea-section , .features-container {
@@ -185,7 +188,7 @@
   flex-wrap: wrap;
   max-width: 1300px;
   height: 400px;
-  margin: auto;
+  margin: auto ;
 }
 .about-text , .idea-text , .section-title {
   flex: 1;
@@ -265,8 +268,7 @@
 }
 .features-card-box .section-title {
   font-size: 38px;
-  margin: 80px 60px 50px;
-  color: #3F4F44;
+  color: #2c3e50;
   font-weight: 400;
   font-style: normal;
   font-weight: bold;
@@ -283,7 +285,7 @@
 .feature-card h3 {
   font-family: 'El Messiri', sans-serif;
   font-size: 20px;
-  color: #333;
+  color: #2c3e50;
   font-weight: 600;
   margin-bottom: 10px;
 }

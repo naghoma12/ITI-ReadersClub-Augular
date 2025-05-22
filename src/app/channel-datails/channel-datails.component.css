@@ -41,7 +41,7 @@ h2.modern-title {
   color: #2c3e50; /* لون أغمق وأكثر احترافية */
   margin-top: 0;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 500;
   padding-right: 10px;
 }
 
@@ -98,6 +98,7 @@ h2.modern-title {
 /* عنوان قسم القصص بتصميم عصري */
 h3.modern-section-title {
   font-size: 1.7rem;
+  font-weight: 500;
   color: #2c3e50;
   margin-top: 40px;
   margin-bottom: 20px;

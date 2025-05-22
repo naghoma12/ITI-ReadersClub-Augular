@@ -4,5 +4,4 @@ export interface Review {
   UserId: number;
   Rating: number;
   Comment: string;
-  CreatedAt: string;
 }

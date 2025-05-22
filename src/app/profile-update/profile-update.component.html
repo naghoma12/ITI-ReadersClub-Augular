@@ -1,0 +1,90 @@
+
+
+  <form (ngSubmit)="onSaveProfile()" class="container w-75 border p-4 rounded shadow bg-light mt-4">
+    <h4 class="mb-3 text-center"><i class="fas fa-user-edit me-2"></i> تعديل الملف الشخصي </h4>
+  
+    <!-- بيانات عامة -->
+    <!-- الاسم -->
+<div class="mb-3">
+  <label for="name" class="form-label">الاسم</label>
+  <input type="text" class="form-control" id="name" [(ngModel)]="editModel.name" name="name" />
+</div>
+
+<!-- البريد -->
+<div class="mb-3">
+  <label for="email" class="form-label">البريد الإلكتروني</label>
+  <input type="email" class="form-control" id="email" [(ngModel)]="editModel.email" name="email" />
+</div>
+
+<!-- الهاتف -->
+<div class="mb-3">
+  <label for="phone" class="form-label">رقم الهاتف</label>
+  <input type="text" class="form-control" id="phone" [(ngModel)]="editModel.phone" name="phone" />
+</div>
+
+<!-- كلمة المرور الحالية -->
+<div class="mb-3">
+  <label for="currentPassword" class="form-label">كلمة المرور القديمة</label>
+  <div class="input-group">
+    <input 
+      [type]="passwordVisibility ? 'text' : 'password'" 
+      class="form-control" 
+      id="currentPassword" 
+      [(ngModel)]="editModel.currentPassword" 
+      name="currentPassword" 
+    />
+    <button class="btn btn-outline-secondary" (click)="togglePasswordVisibility()" type="button">
+      <i class="fas" [ngClass]="passwordVisibility ? 'fa-eye-slash' : 'fa-eye'"></i>
+    </button>
+  </div>
+</div>
+
+<!-- كلمة المرور الجديدة -->
+<div class="mb-3">
+  <label for="newPassword" class="form-label">كلمة المرور الجديدة</label>
+  <div class="input-group">
+    <input 
+      [type]="passwordVisibility ? 'text' : 'password'" 
+      class="form-control" 
+      id="newPassword" 
+      [(ngModel)]="editModel.newPassword" 
+      name="newPassword" 
+    />
+    <button class="btn btn-outline-secondary" (click)="togglePasswordVisibility()" type="button">
+      <i class="fas" [ngClass]="passwordVisibility ? 'fa-eye-slash' : 'fa-eye'"></i>
+    </button>
+  </div>
+</div>
+
+<!-- تأكيد كلمة المرور -->
+<div class="mb-3">
+  <label for="confirmPassword" class="form-label">تأكيد كلمة المرور الجديدة</label>
+  <div class="input-group">
+    <input 
+      [type]="passwordVisibility ? 'text' : 'password'" 
+      class="form-control" 
+      id="confirmPassword" 
+      [(ngModel)]="editModel.confirmPassword" 
+      name="confirmPassword" 
+    />
+    <button class="btn btn-outline-secondary" (click)="togglePasswordVisibility()" type="button">
+      <i class="fas" [ngClass]="passwordVisibility ? 'fa-eye-slash' : 'fa-eye'"></i>
+    </button>
+  </div>
+</div>
+
+  
+    <div class="d-flex justify-content-between mt-4">
+      <button type="submit" class="btn btn-success w-25">
+        <i class="fas fa-save me-1"></i> حفظ
+      </button>
+      <button type="button" class="btn btn-secondary w-25" (click)="onCancelEdit()">
+        <i class="fas fa-times me-1"></i> إلغاء
+      </button>
+      <button type="button" class="btn btn-danger w-25" (click)="onDeleteAccount()">
+        <i class="fas fa-trash-alt me-1"></i> حذف الحساب
+      </button>
+    </div>
+  </form>
+  
+

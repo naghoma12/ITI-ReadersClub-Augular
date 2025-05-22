@@ -13,7 +13,8 @@ import { LogoutService } from '../services/logout.service';
 import { AddReviewDto } from '../add-review-dto';
 import { ReviewService } from '../review.service';
 import { FormsModule } from '@angular/forms';
-
+import { getDocument } from 'pdfjs-dist';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-book-details',
   standalone: true,
@@ -27,9 +28,10 @@ export class BookDetailsComponent {
   like :boolean=false;
   disLick : boolean=false;
   saved : boolean=false;
- 
+  pdfUrl!: SafeResourceUrl;
   storyId!: number;
   story: any;
+  fileUrl!: string;
   isAuthorize !:boolean;
   constructor(
     private bookService: BookService,
@@ -38,13 +40,15 @@ export class BookDetailsComponent {
     private router: Router,
     private snackBar: MatSnackBar,
     private logoutService: LogoutService,
-    private reviewService: ReviewService // جديد
+    private reviewService: ReviewService, // جديد
+    private sanitizer: DomSanitizer
   ) {}
   
 
   ngOnInit() {
     this.storyId = Number(this.route.snapshot.paramMap.get('id'));
-    this.http.post(`http://localhost:5298/api/Stories/${this.storyId}/increase-views`, {})
+
+    this.http.post(`http://readersclubapi.runasp.net/api/Stories/${this.storyId}/increase-views`, {})
     .subscribe({
       next: () => {
        
@@ -59,21 +63,14 @@ export class BookDetailsComponent {
     });
 
     this.ifSaved();
-    console.log(this.saved);
-
+    this.loadReviews();
+    
+   
   }
- 
-  LogOut(): void {
-    this.logoutService.logout({}).subscribe({
-      next: () => {
-        localStorage.removeItem('authToken');
-        this.isAuthorize = false;
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        console.error('Logout failed:', err);
-      }});
-    }
+  openPdf(){
+        this.fileUrl = this.story.file;
+        window.open(this.fileUrl , '_blank');
+  }
   getStoryDetails(id: number) {
     this.bookService.GetAllStories().subscribe(res => {
       this.story = res.find(story => story.id === id); 
@@ -153,6 +150,7 @@ export class BookDetailsComponent {
     }
   }
 
+
   clickdisLick() {
     const token = localStorage.getItem('authToken');
     if (!token) {
@@ -196,9 +194,9 @@ export class BookDetailsComponent {
  
   reviews: any[] = [];
   newReview: AddReviewDto = {
-    StoryId: 0,
+    StoryId: this.storyId,
     UserId: 0,
-    Rating: 0,
+    Rating: 3,
     Comment: ''
   };
   
@@ -237,6 +235,6 @@ export class BookDetailsComponent {
     
   }
   
-  
+
 }
 

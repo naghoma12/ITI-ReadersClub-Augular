@@ -2,54 +2,9 @@
   <div class="container text-center">
     <h1>مرحبًا بك في مكتبتنا الإلكترونية</h1>
     <p>اقرأ واستمع لأفضل الروايات من المؤلفين العرب</p>
-    <div class="search-box">
-      <input type="text" placeholder="ابحث عن كتاب أو مؤلف أو قسم كتاب" />
-      <button><i class="fas fa-search">بحث</i></button>
-    </div>
 
-    <button class="publish-btn">انشر كتابك</button>
   </div>
 </section>
-
-<!-- Section Title
-<h2 class="section-title">الروايات الأكثر شعبية</h2>
-
-Books Grid
-<div class="book-grid">
-  <mat-card class="book-card" *ngFor="let book of popularBooks" (click)="goToDetails(book.id)">
-    <img mat-card-image [src]="book.image" alt="{{ book.title }}">
-    <mat-card-content>
-      <h3>{{ book.title }}</h3>
-      <p>بواسطة {{ book.author }}</p>
-      <div class="stars">
-        <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
-          <mat-icon color="warn">
-            {{ book.rating >= star ? 'star' : (book.rating >= star - 0.5 ? 'star_half' : 'star_border') }}
-          </mat-icon>
-        </ng-container>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div> -->
-
-<!-- <h2 class="section-title">الروايات الأكثر شعبية</h2>
-
-<div class="book-grid">
-  <mat-card class="book-card" *ngFor="let book of popularBooks" (click)="goToDetails(book.id)">
-    <img mat-card-image [src]="'https://localhost:44303/Images/' + book.cover" alt="{{ book.title }}">
-    <mat-card-content>
-      <h3>{{ book.title }}</h3>
-      <p>التقييم: {{ book.averageRating }}</p>
-      <div class="stars">
-        <ng-container *ngFor="let star of [1,2,3,4,5]">
-          <mat-icon color="warn">
-            {{ book.averageRating >= star ? 'star' : (book.averageRating >= star - 0.5 ? 'star_half' : 'star_border') }}
-          </mat-icon>
-        </ng-container>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div> -->
 
 <h2 class="section-title">الروايات الأكثر شعبية</h2>
 
@@ -96,20 +51,50 @@ Books Grid
   <p>لا توجد روايات لعرضها في الوقت الحالي.</p>
 </ng-template>
 
-<!-- <section id="about" class="about-section">
-  <div class="about-card">
-    <div class="about-text">
-      <h2>من نحن</h2>
-      <p>
-        نحن منصة تهدف إلى تقديم أفضل الروايات والكتب بشكل عصري وحديث،
-        مع توفير تجربة قراءة واستماع ممتعة ومريحة للقراء والمؤلفين على حد سواء.
-      </p>
-    </div>
-    <div class="about-image">
-      <img src="https://i.pinimg.com/736x/d2/17/54/d21754023d8a27150e42397e8e1a2d75.jpg" alt="من نحن">
-    </div>
+<h2 class="section-title">الروايات الأكثر مشاهده</h2>
+
+<div *ngIf="mostViewedStories.length > 0; else noBooks">
+  <div class="book-grid">
+    <mat-card
+      class="book-card"
+      *ngFor="let book of mostViewedStories"
+      (click)="goToDetails(book.id)"
+    >
+      <img
+        mat-card-image
+        [src]="book.cover"
+        alt="{{ book.title }}"
+      />
+      <mat-card-content>
+        <h3>{{ book.title }}</h3>
+        <div class="stars">
+          <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+            <mat-icon color="warn">
+              {{
+                book.averageRating >= star
+                  ? "star"
+                  : book.averageRating >= star - 0.5
+                  ? "star_half"
+                  : "star_border"
+              }}
+            </mat-icon>
+          </ng-container>
+        </div>
+        <p class="category">التصنيف: {{ book.categoryName }}</p>
+        <p class="channel">
+          <img [src]="book.channelImage" class="channel-img" alt="Channel Image" />
+          {{ book.channelName }}
+        </p>
+        
+        <!-- ✅ اسم القناة -->
+        
+      </mat-card-content>
+    </mat-card>
   </div>
-</section> -->
+</div>
+<ng-template #noBooks>
+  <p>لا توجد روايات لعرضها في الوقت الحالي.</p>
+</ng-template>
 
 <section id="about" class="about-section">
   <div class="about-card fade-in">
@@ -135,11 +120,11 @@ Books Grid
   </div>
 </section>
 
-<section class="idea-section">
+<section class="idea-section ">
   <div class="idea-container">
     <div class="idea-text">
       <h2><i class="fa-solid fa-lightbulb"></i>فكرة الموقع</h2>
-      <p>
+      <p class="pb-5">
         نوفر منصة للكتاب العرب لنشر أعمالهم بكل حرية، ونمنح القراء تجربة فريدة
         بالاستماع أو القراءة مع تقييمات ومشاركة الروايات.
       </p>
@@ -148,6 +133,7 @@ Books Grid
       <img
         src="https://assets.misbar.com/form/2380b5dbb2a1f3bc3a0737166377cfc4dc2b8fd6.jpg"
         alt="فكرة الموقع"
+        height="300"
       />
     </div>
   </div>

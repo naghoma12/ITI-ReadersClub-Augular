@@ -10,7 +10,7 @@ constructor(private http : HttpClient) {
 
    }
    logout(userData: any): Observable<any> {
-    return this.http.post(`http://localhost:5298/api/Security/LogOut`,{})
+    return this.http.post(`http://readersclubapi.runasp.net/api/Security/LogOut`,{})
       .pipe(
         catchError(error => {
           console.error('خطأ في التسجيل من API:', error);

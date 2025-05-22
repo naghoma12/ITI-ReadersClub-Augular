@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 // import { bootstrapApplication } from '@angular/platform-browser';
 // import { AppComponent } from './app/app.component';
 
@@ -35,6 +37,8 @@ import { VerficationCodeComponent } from './app/verfication-code/verfication-cod
 import { ResetPasswordComponent } from './app/reset-password/reset-password.component';
 import { ChannelsComponent } from './app/channels/channels.component';
 import { ChannelDatailsComponent } from './app/channel-datails/channel-datails.component';
+import { ProfileComponent } from './app/profile/profile.component';
+import { ProfileUpdateComponent } from './app/profile-update/profile-update.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -51,6 +55,8 @@ bootstrapApplication(AppComponent, {
       { path: 'allStories', component: AllStoriesComponent },
       { path: 'chanels', component: ChannelsComponent },
       { path: 'channel-details/:id', component: ChannelDatailsComponent },
+      {path: 'profile', component: ProfileComponent},
+      {path:'profile-update/:id' , component: ProfileUpdateComponent},
       {path:'**', component: NotFoundComponent}
     ]),
     provideHttpClient(),

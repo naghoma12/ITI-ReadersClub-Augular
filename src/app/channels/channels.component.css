@@ -1,84 +1,93 @@
-/* حاوية الشبكة بتصميم عصري مع صور دائرية */
 .card-grid-container.modern-circular-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* بطاقات مرنة بعرض أدنى 200px */
-  gap: 25px;
-  padding: 30px;
-  justify-items: center; /* توسيط البطاقات داخل الخلايا */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  justify-items: center;
 }
 
-/* البطاقة بتصميم عصري مع صور دائرية */
+/* Modern Glassmorphism-style Card */
 .channel-card.modern-circular-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 25px 20px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 220px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* توسيط العناصر أفقيًا */
-  width: 200px;
+  align-items: center;
 }
 
 .channel-card.modern-circular-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* حاوية الصورة الدائرية بتصميم عصري */
+/* Image styling */
 .circular-image-wrapper.modern-circular-image-wrapper {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف للصورة */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #dce1e7;
 }
 
-/* الصورة الدائرية (نفس التنسيق السابق) */
 .channel-img.circular-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* محتوى البطاقة بتصميم عصري */
+/* Text Content */
 .card-content.modern-circular-content {
-  padding: 0 15px;
+  padding: 0 10px;
+  width: 100%;
 }
 
-/* عنوان القناة بتصميم عصري */
 h3.modern-circular-title {
-  font-size: 1.2rem;
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  color: #1c2a38;
+  font-weight: 600;
+  margin: 0 0 8px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%; /* عرض أقصى 100% */
-  white-space: nowrap;
 }
 
-/* معلومات المالك بتصميم عصري */
 p.owner.modern-circular-owner {
   font-size: 0.95rem;
-  color: #777;
-  margin-bottom: 5px;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0 0 6px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-/* وصف القناة بتصميم عصري */
 p.desc.modern-circular-desc {
   font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
-  margin-bottom: 10px;
-  overflow: hidden;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 5px;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* عرض سطرين كحد أقصى */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Optional: Improve icon appearance */
+mat-icon {
+  font-size: 18px;
+  vertical-align: middle;
+  color: #6c757d;
 }

@@ -13,7 +13,7 @@ export class RegisterService {
 
    }
    register(userData: any): Observable<any> {
-    return this.http.post(`http://localhost:5298/api/Security/Register`, userData)
+    return this.http.post(`http://readersclubapi.runasp.net/api/Security/Register`, userData)
       .pipe(
         catchError(error => {
           console.error('خطأ في التسجيل من API:', error);
