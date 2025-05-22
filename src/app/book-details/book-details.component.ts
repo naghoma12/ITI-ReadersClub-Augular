@@ -213,28 +213,36 @@ export class BookDetailsComponent {
   }
   
   addReview() {
-    this.newReview.StoryId = this.storyId;
-  
-    const userId = Number(localStorage.getItem('userId')); 
-    if (!userId) {
-      this.router.navigate(['/login']);
-      return;
-    }
-    this.newReview.UserId = userId;
-  
-    this.reviewService.addReview(this.newReview).subscribe({
-      next: () => {
-        this.loadReviews();
-        this.newReview.Comment = '';
-        this.newReview.Rating = 0;
-      },
-      error: (error) => {
-        console.error('Error adding review', error);
-      }
-    });
-    
+  this.newReview.StoryId = this.storyId;
+
+  const userId = Number(localStorage.getItem('userId')); 
+  if (!userId) {
+    this.router.navigate(['/login']);
+    return;
   }
-  
+
+  this.newReview.UserId = userId;
+
+  this.reviewService.addReview(this.newReview).subscribe({
+    next: (res) => {
+      console.log('Review added:', res);
+      this.snackBar.open('تمت إضافة المراجعة بنجاح', 'إغلاق', { duration: 2000 });
+
+      // Reset form
+      this.newReview.Comment = '';
+      this.newReview.Rating = 3;
+
+      // Reload reviews after slight delay
+      setTimeout(() => {
+        this.loadReviews();
+      }, 500);
+    },
+    error: (error) => {
+      console.error('Error adding review', error);
+    }
+  });
+}
+
 
 }
 
