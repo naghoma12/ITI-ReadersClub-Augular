@@ -1,27 +1,36 @@
-# LibraryWebite
+# 📚 ReadersClub
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+ReadersClub is a web application that connects book enthusiasts. It allows users to discover books
+, join reading challenges, write reviews, and engage in discussions with a like-minded community.
 
-## Development server
+## 🚀 Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Browse and search for books
+- Write and read reviews
+- Download books
+- Join reading channels
+- User Authentication
+- Admin panel to manage books, users, and content
 
-## Code scaffolding
+## 🛠 Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**: ASP.NET Core MVC for dashboard , Angular for web application
+- **Backend**: ASP.NET Core Web API
+- **Database**: SQL Server, Entity Framework Core
+- **Others**: AutoMapper, Identity, Role-based Authentication, email sender
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ⚙️ Getting Started
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+-Visual Studio Code
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/naghoma12/ITI-ReadersClub-Augular
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Project Video
+https://www.linkedin.com/posts/activity-7350181604956221440-vVNX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD4tvJgB5qKyrVn2IGeY2BlCIPeB0fG8G28
